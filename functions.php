@@ -7,6 +7,38 @@
  * @package Rico-Amber
  */
 
+
+class Rico_Nav_List extends Walker_Nav_Menu
+{
+
+    function start_lvl( &$output, $depth = 0, $args = array() )
+    {
+        $output .= "\n$indent<ul>\n";
+    }
+    function end_lvl( &$output, $depth = 0, $args = array() )
+    {
+        $output .= "$indent</ul>\n";
+
+        
+    }
+
+    function start_el( &$output, $object, $depth = 0, $args = array(), $current_object_id = 0 )
+    {
+    	global $post;
+    	$output .= "<li>\n";
+    	$page = get_page_by_title($object->title);
+    	$pageID = get_post_meta($page->ID, 'idName', true);
+    	$output .= sprintf("<div id='%s' class='nav-ul-color'>\n", $pageID);
+    	$output .= "</div>";
+    	$output .= sprintf("<a href='%s'>%s", $object->url, $object->title);
+    } 
+
+	function end_el( &$output, $object, $depth = 0, $args = array() )
+	{
+		$output .= "</a></li>";
+	} 
+}
+
 if ( ! function_exists( 'rico_amber_setup' ) ) :
 /**
  * Sets up theme defaults and registers support for various WordPress features.
@@ -15,6 +47,8 @@ if ( ! function_exists( 'rico_amber_setup' ) ) :
  * runs before the init hook. The init hook is too late for some features, such
  * as indicating support for post thumbnails.
  */
+
+
 function rico_amber_setup() {
 	/*
 	 * Make theme available for translation.
@@ -150,3 +184,6 @@ require get_template_directory() . '/inc/customizer.php';
  * Load Jetpack compatibility file.
  */
 require get_template_directory() . '/inc/jetpack.php';
+
+
+

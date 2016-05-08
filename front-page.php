@@ -39,15 +39,18 @@ get_header(); ?>
 			<p>That we can tuck in our children at night and know that they are fed and clothed and safe from harm. Our trials and triumphs became at once unique and universla.</p>
 			<div class="portfolio-content">
 				<!-- select all the portfolio posts -->
-				<?php $myquery  = new WP_Query('category_name=portfolio'); ?>
-				<?php while( $myquery ->have_posts() ) : 
-					$myquery ->the_post(); ?>
+				<?php $myquery  = new WP_Query('category_name=portfolio');
+				if( $myquery -> have_posts() ) :
+				 	while( $myquery ->have_posts() ) : 
+						$myquery ->the_post(); ?>
 					<div class="portfolio-column">
 						<a href="<?php the_permalink() ?>">
 							<?php the_post_thumbnail( ); ?>
 						</a>
 					</div>
-				<?php endwhile; ?>
+				<?php 
+					endwhile;
+				endif;?>
 				<? wp_reset_postdata(); ?>
 
 			</div>
@@ -107,15 +110,17 @@ get_header(); ?>
 		=============== -->
 		<div class="quote">
 			<div class="quote-text">
-				<?php $mynewQuery  = new WP_Query('category_name=quotes&posts_per_page=1'); ?>
-				<?php while( $mynewQuery->have_posts() ) : 
-					$mynewQuery->the_post(); ?>
+				<?php $mynewQuery  = new WP_Query('category_name=quotes&posts_per_page=1');
+					if( $mynewQuery -> have_posts() ) :
+						while( $mynewQuery->have_posts() ) : 
+							$mynewQuery->the_post(); ?>
 					<h3>
 						<?php echo(get_the_content()); ?>
 					</h3>
 					<p class="torquoise-font"><?php echo(get_post_meta( $post->ID, "source", true )); ?></p>
-				<?php endwhile; ?>
-				<? wp_reset_postdata(); ?>
+				<?php endwhile; 
+				endif;?>
+				<?php wp_reset_postdata(); ?>
 			</div>
 		</div>
 		<!-- ===============
@@ -125,8 +130,9 @@ get_header(); ?>
 			<h2 class="gray-font">Latest blog posts</h2>
 				<!-- first column -->
 				<?php $blogQuery = new WP_Query('category_name=articles&posts_per_page=3');
-					while($blogQuery->have_posts()) :
-						$blogQuery->the_post();	?>
+					if($blogQuery -> have_posts() ) :
+						while($blogQuery->have_posts()) :
+							$blogQuery->the_post();	?>
 				<div class="blog-posts-column">
 					<div class="blog-image-wrapper">
 						<?php the_post_thumbnail();?>
@@ -140,7 +146,9 @@ get_header(); ?>
 						</div>
 					</div>
 				</div>
-				<?php endwhile; ?>
+				<?php 
+					endwhile; 
+				endif;?>
 				<? wp_reset_postdata(); ?>
 
 				<!-- first column -->
@@ -203,20 +211,22 @@ get_header(); ?>
 			<div class="our-team-content">
 				<!-- first column -->
 				<?php $team_query = new WP_Query('category_name=team members');
-					while( $team_query -> have_posts()) :
-						$team_query -> the_post(); ?>
+					if( $team_query -> have_posts() ) :
+						while( $team_query -> have_posts()) :
+							$team_query -> the_post(); ?>
 				<div class="our-team-column">
 					<div class="team-member-info">
-						<div class="team-member-name">
-							<p>TEST NAME</p>
-							<p>TEST JOB</p>
+						<div id="<?php echo($post->ID); ?>" class="team-member-name">
+							<p><?php echo( get_the_title() );?></p>
+							<p><?php echo( get_post_meta($post->ID, 'job-title', true) ); ?></p>
 						</div>
 						<?php the_post_thumbnail(); ?>
 					</div>
-					<div class="our-team-profile-button torquoise-font">PROFILE
+					<div class="team-profile-btn torquoise-font">PROFILE
 					</div>
 				</div>
-				<?php endwhile; ?>
+				<?php endwhile; 
+					endif;?>
 				<? wp_reset_postdata(); ?>
 			</div>
 		</div>

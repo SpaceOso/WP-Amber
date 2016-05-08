@@ -25,18 +25,23 @@
 <div id="page" class="site">
 	<!-- useful for screen readers -->
 	<a class="skip-link screen-reader-text" href="#main"><?php esc_html_e( 'Skip to content', 'rico-amber' ); ?></a>
-
 	<header>
-		<nav role="navigation">
-			<div class="searchBar"></div>
-			<div class="logo">
-				<img src="<?php echo(get_template_directory_uri());?>/images/amber-logo.svg" alt="amber logo">
+		<div class="searchBar"></div>
+			<nav role="navigation">
+			<div class="nav-content">
+				<div class="logo">
+					<img src="<?php echo(get_template_directory_uri());?>/images/amber-logo.svg" alt="amber logo">
+				</div>
+				<?php wp_nav_menu( array( 
+				'menu_class' => '',
+				'theme_location' => 'primary', 
+				'menu_id' => 'primary-menu',
+				'container' => '',
+				'class' => '',
+				'walker' => new Rico_Nav_List()
+				) ); ?>	
 			</div>
-			<ul class="nav-ul">
-				<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu' ) ); ?>
-			</ul>
 		</nav><!-- #site-navigation -->
-
 	</header><!-- #masthead -->
 
 	<div id="content" class="site-content">

@@ -1020,43 +1020,57 @@ p{
 --------------------------------------------------- */
 
 nav{
-	/* width: 100%;
+	/* width: 100%; */
 	height: 72px;
-	text-align: center; */
+	text-align: center;
 	background-color: rgba(0,0,0, 0.5);
 }
 
 .nav-content{
-/* 	display: flex;
-	justify-content: center;
-	align-items: center; */
 	height: 72px;
-	text-align: left;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+	text-align: center;
+	margin: 0 auto;
 }
 
 .logo{
+	width: 200px;
+	height: 72px;
 	display:inline-block;
+	/* vertical-align: top; */
+	position: relative;
+	/* margin: auto 0 ; */
 }
 
+.logo img{
+	max-height: 100%;
+	max-width: 100%;
+	width: auto;
+	height: auto;
+	position: absolute;
+	top:0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+}
 .drop-down-menu{
 	display: none;
 }
 
-.nav-ul{
+nav ul{
 	margin: 0 0 0 6.607142857143%; /* 111 /1680 */
-	height: 100%;
+	/* height: 100%; */
 	display: inline-block;
 	/* display: flex; */
+	/* background-color: red; */
 }
 
 
 
-.nav-ul li{
-	display:flex;
-	flex-direction: column;
+nav ul li{
+	/* display:flex; */
+	/* flex-direction: column; */
+	position: relative;
 	margin: 0;
 	width: 100px;
 	vertical-align: top;
@@ -1065,50 +1079,67 @@ nav{
 	float: left;
 }
 
-.nav-ul li a{
-	display: inline-block;
-	margin: auto;
-}
+
 
 .nav-ul-color{
 	height: 10px;
 	width: 100%;
+	position: relative;
 	top: 0;
 	background-color: #fff;
 	display: inline-block;
 }
 
-#nav-color-home
+
+nav ul li a{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translateY(-50%);
+	transform: translateX(-50%);
+	display: inline-block;
+	margin: auto;
+	font-size: 1.3em;
+	width: 100%;
+}
+
+
+a:visited{
+	color: #fff;
+}
+
+
+#Home
 {
 	background-color: #ff9900;
 }
 
-#nav-color-typography
+#Typography
 {
 	background-color: #fc7100;
 }
 
-#nav-color-blog
+#Blog
 {
 	background-color: #e51c5e;
 }
 
-#nav-color-pages
+#Pages
 {
 	background-color: #ae0f8d;
 }
 
-#nav-color-elements
+#Elements
 {
 	background-color: #6d0fae;
 }
 
-#nav-color-ecommerse
+#Ecommerse
 {
 	background-color: #33227a;
 }
 
-#nav-color-menu
+#MegaMenu
 {
 	background-color: #0c8fcc;
 }
@@ -1846,20 +1877,31 @@ in case you change the h2 to something else */
 
 .team-member-info{
 	position: relative;
+	overflow: hidden;
 }
 
 .team-member-name{
 	position: absolute;
-	bottom: 0;
+	bottom: -20%;
 	left: 0;
 	height: 20%;
 	width: 100%;
 	background-color: red;
+	color: #02baab;
+}
 
+.team-member-name p{
+	margin-top: 5px;
+	font-size: 1.6em;
+}
+
+.team-member-name p:last-of-type{
+	font-size: 1.4em;
+	font-weight: lighter;
 }
 
 
-.our-team-profile-button{
+.team-profile-btn{
 	font-size: 1.2em;
 	display:inline-block;
 	width: 146px;
