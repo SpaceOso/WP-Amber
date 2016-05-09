@@ -1569,6 +1569,7 @@ a:visited{
 }
 
 .blog-posts-column{
+	vertical-align: top;
 	display: inline-block;
 	width: 290px;
 	/* width: 17.261904761905%; */
@@ -1674,7 +1675,7 @@ a:visited{
 	}
 }
 
-@media screen and (max-width: 470px){
+@media screen and (max-width: 535px){
 	.blog-posts-column{
 		display: block;
 		text-align: center;
