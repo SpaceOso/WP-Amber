@@ -2130,3 +2130,14 @@ footer{
 		font-size: 1.8em;
 	}
 }
+
+
+.under-construction{
+	background-color: #fff;
+	color: #000;
+	text-align: center;
+}
+
+.under-construction{
+	height: 100vh;
+}
