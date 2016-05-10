@@ -1,0 +1,1 @@
+!function($){"use strict";$(function(){function n(){alert("it worked")}$("#btn").on("click",n),$(".team-profile-btn").on("click",n)})}(jQuery);

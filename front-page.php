@@ -29,7 +29,7 @@ get_header(); ?>
 		<div class="info">
 			<h2>Steal of the month</h2>
 			<p>That we can tuck in our children at night and know that they are fed and clothed and safe from harm. Our trials and triumphs became at once unique and universla.</p>
-			<div class="info-button">PURCHASE NOW</div> 
+			<div id="btn" class="info-button">PURCHASE NOW</div> 
 		</div>
 		<!-- ===============
 			PORTFOLIO
@@ -222,7 +222,7 @@ get_header(); ?>
 						</div>
 						<?php the_post_thumbnail(); ?>
 					</div>
-					<div class="team-profile-btn torquoise-font">PROFILE
+					<div id="btn" class="team-profile-btn torquoise-font">PROFILE
 					</div>
 				</div>
 				<?php endwhile; 
