@@ -18,7 +18,7 @@
 <link rel="profile" href="http://gmpg.org/xfn/11">
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 <link href="https://fonts.googleapis.com/css?family=Oxygen:400,300,700" rel="stylesheet" type="text/css">
-<?php wp_enqueue_script("jquery"); ?>
+
 
 <?php wp_head(); ?>
 </head>
@@ -30,19 +30,23 @@
 	<header>
 		<div class="searchBar"></div>
 			<nav role="navigation">
-			<div class="nav-content">
-				<div class="logo">
-					<img src="<?php echo(get_template_directory_uri());?>/images/amber-logo.svg" alt="amber logo">
+				<div class="nav-content">
+					<button type="button" class="navbar-toggle">
+						<span class="navbar-toggle-bar"></span>
+						<span class="navbar-toggle-bar"></span>
+						<span class="navbar-toggle-bar"></span>
+					</button>
+					<div class="logo">
+						<img src="<?php echo(get_template_directory_uri());?>/images/amber-logo.svg" alt="amber logo">
+					</div>
+					<?php wp_nav_menu( array(
+						'theme_location' => 'primary',
+						'menu_id' => 'primary-menu',
+						'container' => '',
+						'class' => '',
+						'walker' => new Rico_Nav_List()
+					) ); ?>
 				</div>
-				<?php wp_nav_menu( array( 
-				'menu_class' => '',
-				'theme_location' => 'primary', 
-				'menu_id' => 'primary-menu',
-				'container' => '',
-				'class' => '',
-				'walker' => new Rico_Nav_List()
-				) ); ?>	
-			</div>
 		</nav><!-- #site-navigation -->
 	</header><!-- #masthead -->
 

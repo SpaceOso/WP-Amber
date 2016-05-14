@@ -928,7 +928,7 @@ html{
 	-webkit-box-sizing: border-box;
   	-moz-box-sizing: border-box;
   	box-sizing: border-box;
-	
+
 }
 
 *, *:before, *:after{
@@ -949,6 +949,16 @@ body{
 	width: 100%;
 	/* max-width: 1680px; */
 	height: 100%;
+}
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none;   /* Chrome/Safari/Opera */
+  -khtml-user-select: none;    /* Konqueror */
+  -moz-user-select: none;      /* Firefox */
+  -ms-user-select: none;       /* Internet Explorer/Edge */
+  user-select: none;           /* Non-prefixed version, currently
+                                  not supported by any browser */
 }
 /* ---------------------------------------------------
 			FONT-SIZES
@@ -1021,17 +1031,43 @@ p{
 
 nav{
 	/* width: 100%; */
-	height: 72px;
+	/*height: 72px;*/
 	text-align: center;
-	background-color: rgba(0,0,0, 0.5);
+	position: relative;
+
+	z-index: 3;
 }
 
 .nav-content{
 	height: 72px;
 	text-align: center;
 	margin: 0 auto;
+	background-color: rgba(0,0,0, 0.5);
 	/* overflow: auto; */
+	position: absolute;
+	width: 100%;
 }
+
+.navbar-toggle{
+	/*background-color: rgba(0,0,0,0);*/
+	background-color: transparent;
+	height: 100%;
+	border: none;
+	box-shadow: none;
+	border-radius: 0px;
+	padding: 0;
+	text-shadow: none;
+	display: none;
+}
+.navbar-toggle-bar{
+	width: 30px;
+	height: 5px;
+	background-color: white;
+	display: block;
+	margin: 5px 0;
+	border-radius: 2px;
+}
+
 
 .logo{
 	width: 200px;
@@ -1059,32 +1095,24 @@ nav{
 }
 
 nav ul{
-	/* margin: 0 0 0 6.607142857143%; */ /* 111 /1680 */
-	/* height: 100%; */
 	display: inline-block;
-	width: auto;
-	z-index: 1;
-	/* display: flex; */
-	/* background-color: red; */
+	/*width: auto;*/
+	/*z-index: 1;*/
+	margin-right: auto;
 }
 
-
-
 nav ul li{
-	/* display:flex; */
-	/* flex-direction: column; */
 	position: relative;
 	margin: 0;
-	width: 100px;
+	/*width: 100px;*/
+	width: 10vw;
 	vertical-align: top;
 	text-align: center;
 	height: 72px;
 	float: left;
 }
 
-
-
-.nav-ul-color{
+.nav-color{
 	height: 10px;
 	width: 100%;
 	position: relative;
@@ -1092,7 +1120,6 @@ nav ul li{
 	background-color: #fff;
 	display: inline-block;
 }
-
 
 nav ul li a{
 	position: absolute;
@@ -1106,11 +1133,89 @@ nav ul li a{
 	width: 100%;
 }
 
-
 a:visited{
 	color: #fff;
 }
 
+@media screen and (max-width: 890px){
+	.nav-content{
+		text-align: center;;
+	}
+
+	.logo{
+		/*display: block;*/
+		width: 100px;
+		margin: 0 5% 0 2%;
+	}
+
+
+	nav ul li a{
+		margin: 0 auto;
+		width: 80%;
+	}
+
+}
+
+@media screen and (max-width: 675px){
+	nav{
+		/*position: relative;*/
+		height: auto;
+	}
+
+	.nav-content{
+		/*height: auto;*/
+		text-align: center;
+	}
+
+	.navbar-toggle{
+		/*position: absolute;*/
+		/*top: 50%;*/
+		height: 100%;
+		left: 0;
+		display: inline-block;
+		float: left;
+		/*margin-left: 10%;*/
+		margin: auto 0 auto 10%;
+	}
+	.logo{
+		display: inline-block;
+		position: static;
+		/*margin:auto;*/
+		margin: auto;
+	}
+	nav ul{
+		display: none;
+		position: absolute;
+		/*background-color: rgba(0,0,0, 0.5);*/
+		top:  72px;
+		width: 100%;
+	}
+
+	nav ul li{
+		display: block;
+		float: none;
+		width: 100%;
+		height: 50px;
+		line-height: 0;
+		text-align: left;
+		/*text-align: center;*/
+	}
+
+	nav ul li a{
+		position: absolute;;
+		font-size: 2em;
+		margin: 0 auto;
+	}
+
+	.nav-color{
+		height: 100%;
+		width: 100%;
+		position: relative;
+		top: 0;
+		background-color: #fff;
+		display: inline-block
+	}
+}
 
 #Home
 {
@@ -1146,103 +1251,6 @@ a:visited{
 {
 	background-color: #0c8fcc;
 }
-
-@media screen and (max-width: 890px){
-	nav ul li{
-		/* width: 80px; */
-		/* width: auto; */
-	}
-
-	nav ul li a{
-		margin: auto 10px;
-	}
-}
-
-@media screen and (max-width: 890px){
-	.nav-ul-color{
-		/* height: 100%; */
-		height: 10px;
-		/* width: 100%; */
-		width: 10px;
-		/* top: 0; */
-		background-color: #fff;
-		display: inline-block;
-		margin-left: 5px;
-		order: 2;
-		-moz-border-radius: 50px;
-		-webkit-border-radius: 50px;
-		border-radius: 50px;
-	}
-	nav ul li{
-		/* flex-direction: row; */
-		align-items: center;
-		/* justify-content: flex-start; */
-		width: auto;
-		padding-right: 5px;
-	}
-
-	nav ul li a{
-		float: right;
-		margin: auto 0;
-		display:inline;
-	}
-}
-
-@media screen and (max-width: 702px){
-	.logo{
-		display:block;
-		margin: 0 auto;
-	}
-	
-	.nav-content{
-		display: block;
-		text-align: center;
-		margin: 0 auto;
-	}
-
-	nav ul{
-		/* display:inline-block; */
-		width: auto;
-		text-align: center;
-		/* height: auto; */
-		margin: 0 auto;
-	}
-
-	nav ul li{
-		height: auto;
-	}
-
-	nav ul a{
-		margin: 0 auto;
-	}
-
-}
-
-@media screen and (max-width: 464px){
-
-	.nav-content{
-
-	}
-	.nav-ul{
-		display:none;
-	}
-
-	.logo{
-		display:inline-block;
-		position: relative;
-		top: 50%;
-		transform: translateY(-50%);
-	}
-
-	.drop-down-menu{
-		display: inline-block;
-		position: relative;
-		top: 50%;
-		transform: translateY(-50%);
-		float: right;
-	}
-}
-
 /* ---------------------------------------------------
 			HEADER
 --------------------------------------------------- */
@@ -1265,12 +1273,7 @@ a:visited{
 }
 
 @media screen and (max-width: 768px){
-	
-	header{
-		/* height: auto; */
-		min-height: 600px;
-		
-	}
+
 	.splashText{
 		margin: 0;
 		position: relative;
@@ -1294,7 +1297,7 @@ a:visited{
 .info{
 	width: 100%;
 	text-align: center;
-	color: #3b4954;	
+	color: #3b4954;
 }
 
 .info h2{
@@ -1304,7 +1307,7 @@ a:visited{
 .info p{
 	font-size: 1.8em;
 	width: 770px; /* 770 / 1680 */
-	
+
 	margin: 88px auto 0 auto;
 }
 
@@ -1315,7 +1318,7 @@ a:visited{
 	color: #02baab;
 	padding: 15px;
 	border: 3px solid #02baab;
-	margin: 50px auto 100px auto;	
+	margin: 50px auto 100px auto;
 }
 
 #btn{
@@ -1342,10 +1345,12 @@ a:visited{
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center;
-	width: 100%;
+	/* width: 100%; */
 	height: 740px;
 	text-align: center;
 	padding-top: 99px;
+	position: relative;
+	/*display: hidden;*/
 }
 
 .portfolio h2{
@@ -1361,33 +1366,57 @@ a:visited{
 }
 
 .portfolio-content{
-	display: flex;
+/* 	display: flex;
 	flex-wrap: nowrap;
 	align-items: center;
-	justify-content: center;
+	justify-content: center; */
+	position: relative;
+	/* border: 2px solid red; */
+	overflow: hidden;
+	width: 80%;
+	height: 300px;
+	margin: 0 auto;
+	/*display: hidden;*/
+}
+
+.port-row{
+	display: inline-block;
+	width: auto;
+	position: absolute;
+	top: 0;
+	left: 0;
+	white-space: nowrap;
+	font-size: 0;
+	/*display: hidden;*/
 }
 .portfolio-column{
 	display:inline-block;
 	/* margin-right: 30px; */
-	margin: 0 1.785714285714%;
+	/* margin: 0 1.785714285714%; */
+	margin: 0 15px;
+	/* padding: 0; */
+	/* font-size: 0; */
+	/* margin: 0; */
 }
 
 .portfolio-column img{
 	width: 100%;
+	/*************************************************************/
+	width: 20px;
 	max-width: 100%;
 }
 
 
-.portfolio-buttons{
+.port-btn-container{
 	text-align: center;
 	font-size: 1.8em;
 	margin-top: 30px;
 }
 
-.portfolio-button-prev,
-.portfolio-button-next{
+.port-btn{
 	display:inline-block;
 	margin-right: 1.785714285714%;
+	cursor: pointer;
 }
 
 @media screen and (max-width: 908px){
@@ -1649,7 +1678,7 @@ a:visited{
 	.blog-posts-column img{
 		display:inline-block;
 		height: 154px;
-		width: 203px;	
+		width: 203px;
 	}
 
 	.blog-image-wrapper{
@@ -1890,18 +1919,31 @@ in case you change the h2 to something else */
 }
 
 .team-member-info{
-	position: relative;
+	/* position: relative; */
 	/* overflow: hidden; */
 }
 
-.team-member-name{
+.team-member-picture{
+	position: relative;
+	overflow: hidden;
+}
+
+.member-name-wrapper{
 	position: absolute;
-	bottom: -20%;
+	bottom: 0;
 	left: 0;
-	height: 20%;
 	width: 100%;
-	background-color: red;
+	/* background-color: red; */
+}
+.team-member-name{
+	display: inline-block;
+	height: 20%;
+	/* height: 50px; */
+	width: 100%;
+	/* background-color: green; */
+	background-color: #fff;
 	color: #02baab;
+	/* z-index: 1; */
 	display: none;
 }
 
@@ -1924,6 +1966,7 @@ in case you change the h2 to something else */
 	padding: 15px 30px;
 	margin: 30px 0 30px 0;
 	border: 2px solid #02baab;
+	z-index: 2;
 }
 
 .our-team-column{
@@ -2070,7 +2113,7 @@ footer{
 		display: block;
 		margin: auto;
 	}
-	
+
 	.follow-us p{
 		display: none;
 	}
@@ -2097,7 +2140,7 @@ footer{
 		margin-bottom: 30px;
 	}
 
-	.footer-address, 
+	.footer-address,
 	.tweet{
 		font-size: 1.8em;
 		width: 100%;
@@ -2108,7 +2151,7 @@ footer{
 		height: 40px;
 		width: 100%;
 	}
-	
+
 	.footer-address-text{
 		width: auto;
 	}
@@ -2127,7 +2170,7 @@ footer{
 		/* width: 100%; */
 		width: 210px;
 		max-width: 100%;
-		
+
 	}
 	.follow-us li{
 		display: inline-block;

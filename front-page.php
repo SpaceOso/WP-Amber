@@ -29,7 +29,7 @@ get_header(); ?>
 		<div class="info">
 			<h2>Steal of the month</h2>
 			<p>That we can tuck in our children at night and know that they are fed and clothed and safe from harm. Our trials and triumphs became at once unique and universla.</p>
-			<div id="btn" class="info-button">PURCHASE NOW</div> 
+			<div id="btn" class="info-button">PURCHASE NOW</div>
 		</div>
 		<!-- ===============
 			PORTFOLIO
@@ -37,26 +37,26 @@ get_header(); ?>
 		<div class="portfolio">
 			<h2>Latest works</h2>
 			<p>That we can tuck in our children at night and know that they are fed and clothed and safe from harm. Our trials and triumphs became at once unique and universla.</p>
-			<div class="portfolio-content">
-				<!-- select all the portfolio posts -->
-				<?php $myquery  = new WP_Query('category_name=portfolio');
-				if( $myquery -> have_posts() ) :
-				 	while( $myquery ->have_posts() ) : 
-						$myquery ->the_post(); ?>
-					<div class="portfolio-column">
-						<a href="<?php the_permalink() ?>">
-							<?php the_post_thumbnail( ); ?>
-						</a>
-					</div>
-				<?php 
-					endwhile;
-				endif;?>
-				<? wp_reset_postdata(); ?>
-
-			</div>
-			<div class="portfolio-buttons">
-				<div class="portfolio-button-prev"><</div>
-				<div class="portfolio-button-next">></div>
+			<div id='post-viewer' class="portfolio-content">
+				<div class="port-row">	<!-- select all the portfolio posts -->
+					<!-- <?php $myquery  = new WP_Query('category_name=portfolio');
+					if( $myquery -> have_posts() ) :
+					 	while( $myquery ->have_posts() ) :
+							$myquery ->the_post(); ?>
+						<div id='<?php echo(get_the_title())?>' class="portfolio-column">
+							<a href="<?php the_permalink() ?>">
+								<?php the_post_thumbnail( ); ?>
+							</a>
+						</div>
+					<?php
+						endwhile;
+					endif;?> -->
+					<? wp_reset_postdata(); ?>
+				</div>
+			</div> <!-- port-viewer -->
+			<div class="port-btn-container">
+				<div id='port-prev' class="port-btn noselect"><</div>
+				<div id='port-next' class="port-btn noselect">></div>
 			</div>
 		</div>
 		<!-- ===============
@@ -112,13 +112,13 @@ get_header(); ?>
 			<div class="quote-text">
 				<?php $mynewQuery  = new WP_Query('category_name=quotes&posts_per_page=1');
 					if( $mynewQuery -> have_posts() ) :
-						while( $mynewQuery->have_posts() ) : 
+						while( $mynewQuery->have_posts() ) :
 							$mynewQuery->the_post(); ?>
 					<h3>
 						<?php echo(get_the_content()); ?>
 					</h3>
 					<p class="torquoise-font"><?php echo(get_post_meta( $post->ID, "source", true )); ?></p>
-				<?php endwhile; 
+				<?php endwhile;
 				endif;?>
 				<?php wp_reset_postdata(); ?>
 			</div>
@@ -146,8 +146,8 @@ get_header(); ?>
 						</div>
 					</div>
 				</div>
-				<?php 
-					endwhile; 
+				<?php
+					endwhile;
 				endif;?>
 				<? wp_reset_postdata(); ?>
 
@@ -216,16 +216,19 @@ get_header(); ?>
 							$team_query -> the_post(); ?>
 				<div class="our-team-column">
 					<div class="team-member-info">
-						<div id="<?php echo($post->ID); ?>" class="team-member-name">
-							<p><?php echo( get_the_title() );?></p>
-							<p><?php echo( get_post_meta($post->ID, 'job-title', true) ); ?></p>
-						</div>
-						<?php the_post_thumbnail(); ?>
-					</div>
-					<div id="btn" class="team-profile-btn torquoise-font">PROFILE
+						<div class='team-member-picture'>
+							<?php the_post_thumbnail(); ?>
+								<div class="member-name-wrapper">
+									<div id="<?php echo($post->ID); ?>" class="team-member-name">
+										<p><?php echo( get_the_title() );?></p>
+										<p><?php echo( get_post_meta($post->ID, 'job-title', true) ); ?></p>
+									</div>
+								</div>
+						</div> <!-- member-picture -->
+						<div id="btn" class="team-profile-btn torquoise-font">PROFILE</div>
 					</div>
 				</div>
-				<?php endwhile; 
+				<?php endwhile;
 					endif;?>
 				<? wp_reset_postdata(); ?>
 			</div>

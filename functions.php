@@ -19,7 +19,7 @@ class Rico_Nav_List extends Walker_Nav_Menu
     {
         $output .= "$indent</ul>\n";
 
-        
+
     }
 
     function start_el( &$output, $object, $depth = 0, $args = array(), $current_object_id = 0 )
@@ -28,16 +28,29 @@ class Rico_Nav_List extends Walker_Nav_Menu
     	$output .= "<li>\n";
     	$page = get_page_by_title($object->title);
     	$pageID = get_post_meta($page->ID, 'idName', true);
-    	$output .= sprintf("<div id='%s' class='nav-ul-color'>\n", $pageID);
+    	$output .= sprintf("<div id='%s' class='nav-color'>\n", $pageID);
     	$output .= "</div>";
     	$output .= sprintf("<a href='%s'>%s", $object->url, $object->title);
-    } 
+    }
 
 	function end_el( &$output, $object, $depth = 0, $args = array() )
 	{
 		$output .= "</a></li>";
-	} 
+	}
 }
+
+
+function sb_scroller_scripts() {
+    wp_enqueue_script( 'jquery' );
+	wp_register_script( 'jqueryui', 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js');
+    wp_enqueue_script( 'jqueryui' );
+    wp_enqueue_script('jquery-effects-drop');
+    wp_register_script('rico-amber-script', get_template_directory_uri().'/js/rico-amber.js',array('jquery', 'jqueryui'), true);
+    wp_enqueue_script('rico-amber-script');
+}
+
+add_action('wp_enqueue_scripts', 'sb_scroller_scripts');
+
 
 if ( ! function_exists( 'rico_amber_setup' ) ) :
 /**
@@ -184,6 +197,3 @@ require get_template_directory() . '/inc/customizer.php';
  * Load Jetpack compatibility file.
  */
 require get_template_directory() . '/inc/jetpack.php';
-
-
-
