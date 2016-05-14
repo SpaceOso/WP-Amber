@@ -191,7 +191,7 @@ select {
 }
 
 button,
-html input[type="button"],
+/*html input[type="button"],*/
 input[type="reset"],
 input[type="submit"] {
 	-webkit-appearance: button;
@@ -415,7 +415,7 @@ table {
 # Forms
 --------------------------------------------------------------*/
 button,
-input[type="button"],
+/*input[type="button"],*/
 input[type="reset"],
 input[type="submit"] {
 	border: 1px solid;
@@ -432,19 +432,19 @@ input[type="submit"] {
 }
 
 button:hover,
-input[type="button"]:hover,
+/*input[type="button"]:hover,*/
 input[type="reset"]:hover,
 input[type="submit"]:hover {
 	border-color: #ccc #bbb #aaa;
 	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8), inset 0 15px 17px rgba(255, 255, 255, 0.8), inset 0 -5px 12px rgba(0, 0, 0, 0.02);
 }
 
-button:focus,
-input[type="button"]:focus,
+/*button:focus,*/
+/*input[type="button"]:focus,*/
 input[type="reset"]:focus,
 input[type="submit"]:focus,
-button:active,
-input[type="button"]:active,
+/*button:active,*/
+/*input[type="button"]:active,*/
 input[type="reset"]:active,
 input[type="submit"]:active {
 	border-color: #aaa #bbb #bbb;
@@ -926,8 +926,8 @@ html{
 	width: 100%;
 	font-family: "Oxygen", sans-serif;
 	-webkit-box-sizing: border-box;
-  	-moz-box-sizing: border-box;
-  	box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 
 }
 
@@ -963,15 +963,15 @@ body{
 /* ---------------------------------------------------
 			FONT-SIZES
 --------------------------------------------------- */
-a,p{
-	/* font-size: 1.2em; */
-}
-
-
 a{
 	text-decoration: none;
 	color: #fff;
 }
+
+a:visited{
+	color: #fff;
+}
+
 ul{
 	margin: 0;
 	padding: 0;
@@ -1059,6 +1059,13 @@ nav{
 	text-shadow: none;
 	display: none;
 }
+
+button:focus{
+	box-shadow: none;
+	border-color: none;
+}
+
+
 .navbar-toggle-bar{
 	width: 30px;
 	height: 5px;
@@ -1133,9 +1140,7 @@ nav ul li a{
 	width: 100%;
 }
 
-a:visited{
-	color: #fff;
-}
+
 
 @media screen and (max-width: 890px){
 	.nav-content{
@@ -1167,7 +1172,11 @@ a:visited{
 		text-align: center;
 	}
 
-	.navbar-toggle{
+	.navbar-toggle,
+	button,
+	button:hover,
+	button:focus,
+	button:active{
 		/*position: absolute;*/
 		/*top: 50%;*/
 		height: 100%;
@@ -1176,7 +1185,10 @@ a:visited{
 		float: left;
 		/*margin-left: 10%;*/
 		margin: auto 0 auto 10%;
+		box-shadow: none;
 	}
+
+
 	.logo{
 		display: inline-block;
 		position: static;
@@ -1184,17 +1196,21 @@ a:visited{
 		margin: auto;
 	}
 	nav ul{
-		display: none;
+
 		position: absolute;
 		/*background-color: rgba(0,0,0, 0.5);*/
 		top:  72px;
+		left: 0;
+		height: 350px;
 		width: 100%;
+		/*padding: 1px solid transparent;*/
+		display: none;
 	}
 
 	nav ul li{
 		display: block;
 		float: none;
-		width: 100%;
+		width: calc(100%);
 		height: 50px;
 		line-height: 0;
 		text-align: left;
@@ -1208,8 +1224,8 @@ a:visited{
 	}
 
 	.nav-color{
-		height: 100%;
-		width: 100%;
+		height: 50px;
+		width: calc(100%);
 		position: relative;
 		top: 0;
 		background-color: #fff;
@@ -1220,36 +1236,72 @@ a:visited{
 #Home
 {
 	background-color: #ff9900;
+	transition: background-color .5s;
+}
+
+nav ul li:hover #Home{
+	background-color: #40DFFF;
 }
 
 #Typography
 {
 	background-color: #fc7100;
+	transition: background-color .5s;
+}
+
+nav ul li:hover #Typography{
+	/*background-color: #FE320D;*/
+	background-color: #14C97E;
 }
 
 #Blog
 {
 	background-color: #e51c5e;
+	transition: background-color .5s;
+}
+
+nav ul li:hover #Blog{
+	background-color: #69B204;
 }
 
 #Pages
 {
 	background-color: #ae0f8d;
+	transition: background-color .5s;
+}
+
+nav ul li:hover #Pages{
+	background-color: #CFE12A;
 }
 
 #Elements
 {
 	background-color: #6d0fae;
+	transition: background-color .5s;
+}
+
+nav ul li:hover #Elements{
+	background-color: #E12AB3;
 }
 
 #Ecommerse
 {
 	background-color: #33227a;
+	transition: background-color .5s;
+}
+
+nav ul li:hover #Ecommerse{
+	background-color: #CD98E0;
 }
 
 #MegaMenu
 {
 	background-color: #0c8fcc;
+	transition: background-color .5s;
+}
+
+nav ul li:hover #MegaMenu{
+	background-color: #284AFF;
 }
 /* ---------------------------------------------------
 			HEADER

@@ -45,6 +45,7 @@ function sb_scroller_scripts() {
 	wp_register_script( 'jqueryui', 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js');
     wp_enqueue_script( 'jqueryui' );
     wp_enqueue_script('jquery-effects-drop');
+    wp_enqueue_script('jquery-effects-slide');
     wp_register_script('rico-amber-script', get_template_directory_uri().'/js/rico-amber.js',array('jquery', 'jqueryui'), true);
     wp_enqueue_script('rico-amber-script');
 }

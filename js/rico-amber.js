@@ -9,6 +9,8 @@
 	var postViewer;
 	var postViewerWidth = 0;
 	var portPrev, portNext, portPostRow, portPostRowPositoin;
+	var navBarToggle;
+	var navMenu;
 
 	$(document).ready(function(){
 		//find all the portfolio columns and add them to an array
@@ -24,10 +26,15 @@
 
 		postViewer.width(postViewerWidth);
 
+		//grab info for portfolio secion
 		portPrev = $('#port-prev');
 		portNext = $('#port-next');
 		portPostRow = $('.port-row');
 		portPostRowPositoin = portPostRow.position();
+
+		//grab info for nav bar
+		navBarToggle = $('.navbar-toggle');
+		navMenu = $('#nav-menu');
 
 	});
 
@@ -77,6 +84,7 @@
 		function clickTest(){
 			alert("it worked");
 		}
+
 		$("#btn").on('click', clickTest );
 
 		$(".team-profile-btn").mouseenter(function() {
@@ -92,5 +100,10 @@
 			.toggle('drop', {direction: 'down'});
 		});
 
-	});
+		navBarToggle.on('click', function(){
+			navMenu.toggle('slide', {direction: 'up', easing: 'linear'}, 1000);
+		});
+
+
+	}); //function
 }(jQuery));
