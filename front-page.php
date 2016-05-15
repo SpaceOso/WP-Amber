@@ -163,32 +163,36 @@ get_header(); ?>
 				<div class="experience-column">
 					<div class="experience-content-graphics">
 						<img src="<?php echo($myImages); ?>/images/shape-cogs.png">
-						<!-- first ellipse -->
-						<div class="experience-ellipses-wrapper">
-							<img src="<?php bloginfo('template_directory');?>/images/ellipse.svg">
-							<img src="<?php bloginfo('template_directory');?>/images/ellipse.svg">
-							<img src="<?php bloginfo('template_directory');?>/images/ellipse.svg">
-						</div>
 					</div>
 					<div class="experience-column-text">
-						<h1>500</h1>
+						<h3 id='exp-first'>0</h3>
 						<p>years of web development</p>
 					</div>
 				</div>
+				<!-- first ellipse -->
+			<div class="eillipse-column">
+					<div class="experience-ellipses-wrapper">
+						<img src="<?php bloginfo('template_directory');?>/images/ellipse.svg">
+						<img src="<?php bloginfo('template_directory');?>/images/ellipse.svg">
+						<img src="<?php bloginfo('template_directory');?>/images/ellipse.svg">
+				</div>
+			</div>
 				<!-- second column -->
 				<div class="experience-column">
 					<div class="experience-content-graphics">
 						<img src="<?php echo($myImages); ?>/images/shape-phone.png">
-						<!-- second ellipse -->
-						<div class="experience-ellipses-wrapper">
-							<img src="<?php bloginfo('template_directory');?>/images/ellipse.svg">
-							<img src="<?php bloginfo('template_directory');?>/images/ellipse.svg">
-							<img src="<?php bloginfo('template_directory');?>/images/ellipse.svg">
-						</div>
 					</div>
 					<div class="experience-column-text">
-						<h1>25000</h1>
+						<h3 id='exp-second'>0</h3>
 						<p>results of the last winter year</p>
+					</div>
+				</div>
+				<!-- second ellipse -->
+				<div class="eillipse-column">
+					<div class="experience-ellipses-wrapper">
+						<img src="<?php bloginfo('template_directory');?>/images/ellipse.svg">
+						<img src="<?php bloginfo('template_directory');?>/images/ellipse.svg">
+						<img src="<?php bloginfo('template_directory');?>/images/ellipse.svg">
 					</div>
 				</div>
 				<!-- third column -->
@@ -197,7 +201,7 @@ get_header(); ?>
 						<img src="<?php echo($myImages) ?>/images/shape-rocket.png">
 					</div>
 					<div class="experience-column-text">
-						<h1>100000</h1>
+						<h3 id='exp-third'>0</h3>
 						<p>euros of the military budget</p>
 					</div>
 				</div>

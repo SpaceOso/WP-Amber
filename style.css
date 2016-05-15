@@ -924,7 +924,7 @@ object {
 # rico-amber
 --------------------------------------------------------------*/
 html{
-	/*width: 100%;*/
+
 	font-family: "Oxygen", sans-serif;
 	-webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -942,13 +942,13 @@ body{
 	background-color: #fff;
 	font-size: 62.5%;  /* font-size 1em = 10px on default browser settings */
 	color: #fff;
-	/*overflow: hidden;*/
+	width: 100%;
 }
 
 
 /* PSD width was set to 1680px */
 .site{
-	width: 100%;
+	/*width: 100%;*/
 	/* max-width: 1680px; */
 	height: 100%;
 }
@@ -1128,6 +1128,7 @@ nav ul li{
 .nav-color{
 	height: 10px;
 	width: 100%;
+	left: 0;
 	position: relative;
 	top: 0;
 	background-color: #fff;
@@ -1143,7 +1144,7 @@ nav ul li a{
 	display: inline-block;
 	margin: auto;
 	font-size: 1.3em;
-	width: 100%;
+	/*width: 100%;*/
 }
 
 
@@ -1317,7 +1318,7 @@ nav ul li:hover #MegaMenu{
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
-	width: 100%;
+	/*width: 100%;*/
 	height: 950px;
 	position: relative;
 	overflow: auto;
@@ -1408,7 +1409,6 @@ nav ul li:hover #MegaMenu{
 	text-align: center;
 	padding-top: 99px;
 	position: relative;
-	/*display: hidden;*/
 }
 
 .portfolio h2{
@@ -1834,71 +1834,28 @@ nav ul li:hover #MegaMenu{
 ---------------------------------------------------
  */
 .experience{
-	width: 100%;
-	/* height: 640px; */
 	background-color: #02baab;
 	text-align: center;
-	vertical-align: top;
+	padding: 30px 0 0 0;
 	overflow: auto;
 }
 
 .experience-content{
-	display: flex;
-	justify-content: center;
-	/* text-align: center; */
-	vertical-align: top;
-	margin: 0 1.322751322751% 80px 1.322751322751%;
-}
-
-.experience h1{
-	font-size: 4.8em;
-	font-weight: lighter;
-	margin: 0 0 10px 0;
-	text-align: center;
+	/*vertical-align: top;*/
+	height: 300px;
+	margin: 0 0 30px 0;
 }
 
 .experience h2{
-	margin: 30px auto 40px auto;
-	text-align: center;
+	margin: 0 0 30px 0;
 }
-
-.experience-content-graphics{
-	display: flex;
-	/* height: 214px; */
-	justify-content: center;
-	align-items: center;
-}
-
-.experience-column{
-	display: inline-block;
-	width: auto;
-}
-
-.experience-column img{
-	max-width: 100%;
-}
-
-.experience-ellipses-wrapper{
-	display: inline-block;
-	/* vertical-align: top; */
-	margin: auto 20px;
-	text-align: center;
-	width: 200px;
-	/* width: 50%; */
-	height: 10px;
-
-}
-
-.experience-ellipses-wrapper img{
-	display: inline-block;
-	width: 10px;
-	height: 10px;
-	/* margin: 0 10px; */
-	margin: 0 5.526315789474%;
+.experience-column h3{
+	font-size: 3em;
+	font-weight: lighter;
+	/*text-align: center;*/
 }
 
 .experience-column-text{
-	width: 214px;
 	text-align: center;
 }
 
@@ -1906,75 +1863,85 @@ nav ul li:hover #MegaMenu{
 	font-size: 1.8em;
 }
 
-@media screen and (max-width: 910px){
-	.experience h1{
-		font-size: 3em;
-	}
-	.experience-ellipses-wrapper{
-		margin: auto 10px;
-	}
-	.experience-ellipses-wrapper img{
-		margin: 0 3.526315789474%;
-	}
+.experience-column{
+	display: inline-block;
+	width:calc(100% / 6);
+	position: relative;
+	text-align: center;
+	vertical-align: top;
+	height: 100%;
 }
 
-@media screen and (max-width: 800px){
-	.experience-content-graphics >img,
-	.experience-column-text{
-		width: 171px;
-	}
-
-
-	.experience-ellipses-wrapper{
-		/* width: 100%; */
-		/* margin-left: 20%; */
-	}
-
-	.experience-column{
-		display: inline-block;
-		width: auto;
-	}
+.experience-column img{
+	max-width: 100%;
 }
 
-@media screen and (max-width: 660px){
-	.experience-content-graphics >img,
-	.experience-column-text{
-		width: 136px;
-	}
-
-	.experience-ellipses-wrapper{
-		width: 50px;
-		margin: auto 10px;
-	}
-	.experience-ellipses-wrapper img{
-		margin: 0 3.526315789474%;
-	}
+.eillipse-column{
+	display: inline-block;
+	width:calc(100% / 6);
+	position: relative;
+	text-align: center;
+	height: 100%;
+}
+.experience-ellipses-wrapper{
+	position: relative;
+	display: inline-block;
+	text-align: center;
+	height: 214px;
+	width: 100%;
+	max-width: 214px;
 }
 
-@media screen and (max-width: 553px){
+.experience-ellipses-wrapper img{
+	display: inline-block;
+	width: 10px;
+	height: 10px;
+	margin: 50% 5.526315789474%;
+}
+
+
+
+@media screen and (max-width: 770px){
+	.experience-content{
+		height: 250px;
+	}
+	.experience-column h3{
+		font-size: 2em;
+		font-weight: lighter;
+		/*text-align: center;*/
+	}
+	.experience p{
+		font-size: 1.6em;
+		font-weight: lighter;
+	}
+
 	.experience-ellipses-wrapper img:nth-child(odd){
-		display:none;
+		display: none;
 	}
 }
 
-@media screen and (max-width: 488px){
-	.experience{
+@media screen and (max-width: 675px){
+	.experience-content{
+		text-align: center;
 		height: auto;
 	}
-	.experience-content{
-		display: inline-block;
-	}
-	.experience-column{
-		display: block;
-		margin-bottom: 20px;
+	.eillipse-column{
+		display: none;
 	}
 
-	.experience-content-graphics >img,
-	.experience-column-text{
-		width: auto;
+	.experience-column{
+		width: 70%;
+		margin: 20px auto;
 	}
-	.experience-ellipses-wrapper{
-		display: none;
+
+	.experience-column h3{
+		font-size: 3em;
+		font-weight: lighter;
+
+	}
+	.experience p{
+		font-size: 2em;
+		font-weight: lighter;
 	}
 }
 
@@ -1987,6 +1954,7 @@ nav ul li:hover #MegaMenu{
 	width: 100%;
 	/* height: 720px; */
 	/* padding: 100px 0 0 0; */
+
 }
 
 .our-team-content{
