@@ -95,18 +95,21 @@
 					<div id="footer-colorBox-yellow" class="footer-color"></div>
 					<h4>Popular posts</h4>
 					<ul class="footer-posts">
-						<li>
-							<p class="post-date">September, 30</p>
-							<p class="post-summary">Candy canes dragee pudding. Donut cheesecake I love chocolate icing</p>
+						<?php $footerPostQuery = new WP_Query("category_name=articles");
+							if( $footerPostQuery -> have_posts() ) :
+								while( $footerPostQuery -> have_posts() ) :
+									$footerPostQuery -> the_post(); ?>
+						<li >
+							<a href="<?php the_permalink(); ?>">
+								<p class="post-date"><?php echo ( get_the_date() ); ?></p>
+								<p class="post-summary"><?php echo ( get_the_title() ); ?></p>
+							</a>
+
 						</li>
-						<li>
-							<p class="post-date">April, 22</p>
-							<p class="post-summary">Muffin croissant cookie sesame snaps. Ice cream donut cookie gingerbread</p>
-						</li>
-						<li>
-							<p class="post-date">May, 12</p>
-							<p class="post-summary">Cotton candy muffin tart gummies candy danish liquorice chupa chups tootsie roll.</p>
-						</li>
+						<?php
+							endwhile;
+						endif;
+						?>
 					</ul>
 				</div>
 			</div>
