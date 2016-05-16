@@ -39,7 +39,7 @@ get_header(); ?>
 			<p>That we can tuck in our children at night and know that they are fed and clothed and safe from harm. Our trials and triumphs became at once unique and universla.</p>
 			<div id='post-viewer' class="portfolio-content">
 				<div class="port-row">	<!-- select all the portfolio posts -->
-					<!-- <?php $myquery  = new WP_Query('category_name=portfolio');
+					<?php $myquery  = new WP_Query('category_name=portfolio');
 					if( $myquery -> have_posts() ) :
 					 	while( $myquery ->have_posts() ) :
 							$myquery ->the_post(); ?>
@@ -50,13 +50,15 @@ get_header(); ?>
 						</div>
 					<?php
 						endwhile;
-					endif;?> -->
+					endif;?>
 					<? wp_reset_postdata(); ?>
 				</div>
 			</div> <!-- port-viewer -->
 			<div class="port-btn-container">
-				<div id='port-prev' class="port-btn noselect"><</div>
-				<div id='port-next' class="port-btn noselect">></div>
+				<div class="btn-wrapper">
+					<div id='port-prev' class="port-btn noselect"><</div>
+					<div id='port-next' class="port-btn noselect">></div>
+				</div>
 			</div>
 		</div>
 		<!-- ===============

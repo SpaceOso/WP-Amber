@@ -52,6 +52,8 @@ function sb_scroller_scripts() {
     wp_register_script('countUp');
     wp_enqueue_script('countUpJquery,', get_template_directory_uri().'/js/countUp-jquery.js', false);
     wp_register_script('countUpJquery');
+    wp_register_script('slick', get_template_directory_uri().'/js/slick.min.js', true);
+    wp_enqueue_script('slick');
 
 
 }

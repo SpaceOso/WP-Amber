@@ -11,26 +11,40 @@
 	var portPrev, portNext, portPostRow, portPostRowPositoin;
 	var navBarToggle;
 	var navMenu;
+	var expYear;
+	var $window = $(window);
+	var expSection;
+	var expAnim = false;
 
 	$(document).ready(function(){
-		//find all the portfolio columns and add them to an array
-		postViewer = $('#post-viewer');
-		$('.portfolio-column').each(function(index, element){
-			portColumns.push(element);
+
+		expSection = $('.experience').offset().top;
+
+		$('.port-row').slick({
+			infinite: true,
+  		slidesToShow: 3,
+  		slidesToScroll: 3,
+			prevArrow: $('#port-prev'),
+			nextArrow: $('#port-next')
 		});
+		//find all the portfolio columns and add them to an array
+		// postViewer = $('#post-viewer');
+		// $('.portfolio-column').each(function(index, element){
+		// 	portColumns.push(element);
+		// });
 
 		//grab the width of 1 post
-		postWidth = $( portColumns[1] ).outerWidth( true );
+		//postWidth = $( portColumns[1] ).outerWidth( true );
 		//multiply the width of 1 post by how many we want displayed to set the width of the parent container
-		postViewerWidth = postWidth * numberOfPosts;
+		//postViewerWidth = postWidth * numberOfPosts;
 
-		postViewer.width(postViewerWidth);
+	//	postViewer.width(postViewerWidth);
 
 		//grab info for portfolio secion
-		portPrev = $('#port-prev');
-		portNext = $('#port-next');
-		portPostRow = $('.port-row');
-		portPostRowPositoin = portPostRow.position();
+		//portPrev = $('#port-prev');
+		//portNext = $('#port-next');
+		//portPostRow = $('.port-row');
+		//portPostRowPositoin = portPostRow.position();
 
 		//grab info for nav bar
 		navBarToggle = $('.navbar-toggle');
@@ -38,6 +52,30 @@
 
 	});
 
+	function StartExpAnim(){
+		var animOptions = {
+			useEasing: false
+		}
+		var expFirstAnim = new CountUp('exp-first', 0, 500, 0, 4, animOptions);
+		var expSecondAnim = new CountUp('exp-second', 0, 2500, 0, 4);
+		var expThirdAnim = new CountUp('exp-third', 0, 10000, 0, 4);
+		expFirstAnim.start();
+		expSecondAnim.start();
+		expThirdAnim.start();
+	}
+	// ==================================================
+	// 								WINDOW SCROLL
+	// ==================================================
+
+	//we need to check for scrolltop of company expereince
+	$window.scroll(function(){
+		if( !expAnim ){
+			if($window.scrollTop() >= expSection){
+				expAnim = true;
+				StartExpAnim();
+			}
+		}
+	})
 
 	function SlidePostRow(event){
 		//We'er probably going to want to move each post individually
