@@ -23,29 +23,57 @@
 		$('.port-row').slick({
 			infinite: true,
   		slidesToShow: 3,
-  		slidesToScroll: 3,
+  		slidesToScroll: 1,
+			//centerMode: true,
+			// variableWidth: true,
 			prevArrow: $('#port-prev'),
-			nextArrow: $('#port-next')
+			nextArrow: $('#port-next'),
+			responsive: [
+				{
+					breakpoint: 1128,
+					settings:{
+						slidesToShow: 3,
+						slidesToScroll: 1,
+						infinite: true
+					}
+				}, //1128
+				{
+					breakpoint: 700,
+					settings:{
+						slidesToShow: 2,
+						slidesToScroll: 1,
+						infinite: true
+					}
+				}, //700
+				{
+					breakpoint: 535,
+					settings:{
+						slidesToShow: 1,
+						slidesToScroll: 1,
+						infinite: true
+					}
+				}, //535
+				{
+					breakpoint: 426,
+					settings:{
+						slidesToShow: 1,
+						slidesToScroll: 1,
+						// centerMode: true,
+						// variableWidth: true,
+						infinite: true
+					}
+				}
+			]
 		});
-		//find all the portfolio columns and add them to an array
-		// postViewer = $('#post-viewer');
-		// $('.portfolio-column').each(function(index, element){
-		// 	portColumns.push(element);
-		// });
 
-		//grab the width of 1 post
-		//postWidth = $( portColumns[1] ).outerWidth( true );
-		//multiply the width of 1 post by how many we want displayed to set the width of the parent container
-		//postViewerWidth = postWidth * numberOfPosts;
-
-	//	postViewer.width(postViewerWidth);
-
-		//grab info for portfolio secion
-		//portPrev = $('#port-prev');
-		//portNext = $('#port-next');
-		//portPostRow = $('.port-row');
-		//portPostRowPositoin = portPostRow.position();
-
+		$('.quote-text').slick({
+			infinite: true,
+			dots: true,
+			arrows: false,
+			draggable: false,
+			slidesToShow: 1,
+			slidesToScroll: 1
+		});
 		//grab info for nav bar
 		navBarToggle = $('.navbar-toggle');
 		navMenu = $('#nav-menu');
@@ -130,8 +158,6 @@
 			.toggle('drop', {direction: 'down'});
 		});
 
-		portPrev.on('click', null, {btn: 'prev'},SlidePostRow );
-		portNext.on('click', null, {btn: 'next'}, SlidePostRow );
 
 		$(".team-profile-btn").mouseleave(function() {
 			$( this ).closest(".team-member-info").find(".team-member-name")

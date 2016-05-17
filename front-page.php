@@ -55,10 +55,8 @@ get_header(); ?>
 				</div>
 			</div> <!-- port-viewer -->
 			<div class="port-btn-container">
-				<div class="btn-wrapper">
-					<div id='port-prev' class="port-btn noselect"><</div>
-					<div id='port-next' class="port-btn noselect">></div>
-				</div>
+				<div id='port-prev' class="port-btn noselect"><</div>
+				<div id='port-next' class="port-btn noselect">></div>
 			</div>
 		</div>
 		<!-- ===============
@@ -112,14 +110,14 @@ get_header(); ?>
 		=============== -->
 		<div class="quote">
 			<div class="quote-text">
-				<?php $mynewQuery  = new WP_Query('category_name=quotes&posts_per_page=1');
+				<?php $mynewQuery  = new WP_Query('category_name=quotes&posts_per_page=3');
 					if( $mynewQuery -> have_posts() ) :
 						while( $mynewQuery->have_posts() ) :
 							$mynewQuery->the_post(); ?>
-					<h3>
-						<?php echo(get_the_content()); ?>
-					</h3>
-					<p class="torquoise-font"><?php echo(get_post_meta( $post->ID, "source", true )); ?></p>
+					<div>
+						<h3><?php echo(get_the_content()); ?></h3>
+						<p class="torquoise-font"><?php echo(get_post_meta( $post->ID, "source", true )); ?></p>
+				</div>
 				<?php endwhile;
 				endif;?>
 				<?php wp_reset_postdata(); ?>

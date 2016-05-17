@@ -429,7 +429,7 @@ input[type="submit"] {
 	font-size: 0.75rem;
 	line-height: 1;
 	padding: .6em 1em .4em;
-	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
+	/*text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);*/
 }
 
 button:hover,
@@ -1418,9 +1418,10 @@ nav ul li:hover #MegaMenu{
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center;
-	height: 740px;
+	/*height: 740px;*/
+	height: auto;
 	text-align: center;
-	padding-top: 99px;
+	padding: 99px 0 30px 0;
 	position: relative;
 }
 
@@ -1448,41 +1449,13 @@ nav ul li:hover #MegaMenu{
 }
 
 .portfolio-content{
-/* 	display: flex;
-	flex-wrap: nowrap;
-	align-items: center;
-	justify-content: center; */
-	/*position: relative;*/
-	/* border: 2px solid red; */
-	/*overflow: hidden;*/
 	width: 80%;
-	/*height: 300px;*/
 	margin: 0 auto;
-	/*display: hidden;*/
 }
 
 .port-row{
-	/*display: inline-block;
-	width: auto;*/
-	/*position: absolute;*/
-	/*top: 0;
-	left: 0;*/
-	/*white-space: nowrap;*/
-	/*font-size: 0;*/
-	/*display: hidden;*/
 	text-align: center;
 }
-.portfolio-column{
-	/*display:inline-block;
-	margin: 0 15px;*/
-}
-
-.portfolio-column img{
-	/*width: 100%;*/
-	/*width: 20px;*/
-	max-width: 100%;
-}
-
 
 .port-btn-container{
 	text-align: center;
@@ -1497,6 +1470,7 @@ nav ul li:hover #MegaMenu{
 .port-btn{
 	display:inline-block;
 	/*margin-right: 1.785714285714%;*/
+	margin: 0 10px;
 	cursor: pointer;
 }
 
@@ -1509,11 +1483,6 @@ nav ul li:hover #MegaMenu{
 	}
 }
 
-@media screen and (max-width: 425px){
-	.portfolio-content .portfolio-column:not(:first-of-type){
-		display:none;
-	}
-}
 /* ---------------------------------------------------
 			BREAKBAR
 --------------------------------------------------- */
@@ -1671,21 +1640,29 @@ nav ul li:hover #MegaMenu{
 }
 
 .quote-text{
-	width: 610px;
-	margin: 0 2.459016393443%;
+	position: relative;
+	width: 60%;
+	margin: 0 auto;
+}
+
+.quote-text:before{
+	content: url("images/quotes.svg");
+	width: 40px;
+	height: 40px;
 }
 
 .quote h3{
-	font-weight: 300;
+	font-weight: lighter;
 }
 
 .quote p{
 	font-size: 1.4em;
+	font-weight: bold;
 }
 
 @media screen and (max-width:530px){
 	.quote-text{
-		/* width: 15.094339622642%; */ /* 610 / 530px */
+		width: 90%;
 	}
 }
 /* ---------------------------------------------------
