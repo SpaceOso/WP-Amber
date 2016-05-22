@@ -67,28 +67,7 @@
 				<div class="footer-column">
 					<div id="footer-colorBox-magenta" class="footer-color"></div>
 					<h4>Follow us</h4>
-					<ul class="follow-us">
-						<li>
-							<img src="<?php echo($myImages); ?>/images/icon-facebook.svg">
-							<p>Like us on Facebook</p>
-						</li>
-						<li>
-							<img src="<?php echo($myImages); ?>/images/icon-twitter.svg">
-							<p>Follow us on Twitter</p>
-						</li>
-						<li>
-							<img src="<?php echo($myImages); ?>/images/icon-youtube.svg">
-							<p>Watch videos on YouTube</p>
-						</li>
-						<li>
-							<img src="<?php echo($myImages); ?>/images/icon-instagram.svg">
-							<p>Friend us on Instagram</p>
-						</li>
-						<li>
-							<img src="<?php echo($myImages); ?>/images/icon-pinterest.svg">
-							<p>Repin on Pinterest</p>
-						</li>
-					</ul>
+					<?php dynamic_sidebar( 'Social-Icons'); ?>
 				</div>
 				<!-- Fourth column - popular posts -->
 				<div class="footer-column">
@@ -102,7 +81,7 @@
 						<li >
 							<a href="<?php the_permalink(); ?>">
 								<p class="post-date"><?php echo ( get_the_date() ); ?></p>
-								<p class="post-summary"><?php echo ( get_the_title() ); ?></p>
+								<p class="post-summary torquoise-font"><?php echo ( get_the_title() ); ?></p>
 							</a>
 
 						</li>
@@ -115,9 +94,11 @@
 			</div>
 		<!-- </footer> -->
 		<div class="site-info">
-			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'rico-amber' ) ); ?>"><?php printf( esc_html__( 'Proudly powered by %s', 'rico-amber' ), 'WordPress' ); ?></a>
+			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'rico-amber' ) ); ?>">
+				<?php printf( esc_html__( 'Proudly powered by %s', 'rico-amber' ), 'WordPress' ); ?></a>
 			<span class="sep"> | </span>
-			<?php printf( esc_html__( 'Theme: %1$s by %2$s.', 'rico-amber' ), 'rico-amber', '<a href="http://miguelricodev.com/" rel="designer">Miguel Rico</a>' ); ?>
+			<?php printf( esc_html__( 'Theme: %1$s by %2$s.', 'rico-amber' ), 'rico-amber',
+				'<a href="http://miguelricodev.com/" rel="designer">Miguel Rico</a>' ); ?>
 		</div><!-- .site-info -->
 	</footer><!-- #colophon -->
 </div><!-- #page -->

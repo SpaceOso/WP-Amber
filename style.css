@@ -923,6 +923,33 @@ object {
 /*--------------------------------------------------------------
 # rico-amber
 --------------------------------------------------------------*/
+@font-face {
+    font-family: 'icomoon';
+    src:    url('css/fonts/icomoon.eot?wu9i49');
+    src:    url('css/fonts/icomoon.eot?wu9i49#iefix') format('embedded-opentype'),
+        url('css/fonts/icomoon.ttf?wu9i49') format('truetype'),
+        url('css/fonts/icomoon.woff?wu9i49') format('woff'),
+        url('css/fonts/icomoon.svg?wu9i49#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'icomoon' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+
 html{
 
 	font-family: "Oxygen", sans-serif;
@@ -1425,9 +1452,14 @@ nav ul li:hover #MegaMenu{
 	position: relative;
 }
 
+.portfolio-description{
+	margin-bottom: 30px;
+}
+
 .portfolio h2{
 	font-weight: lighter;
 	position: relative;
+	margin-bottom: 60px;
 }
 
 .portfolio h2:after{
@@ -1440,12 +1472,47 @@ nav ul li:hover #MegaMenu{
 	background-color: #fff;
 }
 
-.portfolio p{
-	text-align: center;
-	font-size: 1.8em;
-	/* width: 44.642857142857%; */	/* 750 / 1680 */
-	width: 750px;
-	margin: 88px auto 50px auto;
+.port-img-container{
+	display: inline-block;
+	position: relative;
+	width: auto;
+
+}
+
+.img-info{
+	width: 100%;
+	height: 25%;
+	opacity: .75;
+	background-color: black;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	text-align: left;
+	padding: 10px;
+}
+
+.img-name{
+	display: inline-block;
+	float: left;
+}
+
+.img-name .title{
+	font-size: 1.4em;
+	margin-bottom: 5px;
+}
+
+.img-name a{
+	color: #02baab;
+	font-size: 1em;
+}
+
+.img-name a:hover{
+	color: #fff;
+}
+
+.img-likes{
+	float: right;
+	display: inline-block;
 }
 
 .portfolio-content{
@@ -1674,7 +1741,11 @@ nav ul li:hover #MegaMenu{
 	text-align: center;
 }
 
-.blog-posts h2{
+.blog-posts a:visited{
+	color: #6d0fae;
+}
+
+/*.blog-posts h2{
 	text-align: center;
 	margin: 80px auto 40px auto;
 	position: relative;
@@ -1688,14 +1759,12 @@ nav ul li:hover #MegaMenu{
 	width: 60px;
 	height: 6px;
 	background-color: #eee;
-}
+}*/
 
 .blog-posts-column{
 	vertical-align: top;
 	display: inline-block;
 	width: 290px;
-	/* width: 17.261904761905%; */
-	/* height: 15.5172413793103%; */
 	border-bottom: 1px solid #3b4954;
 	margin:0 .892857142857% 50px .892857142857%; /* 30 / 290 */
 	text-align: left;
@@ -1705,8 +1774,6 @@ nav ul li:hover #MegaMenu{
 .blog-posts-column .clearfix{
 	display: static;
 }
-
-
 
 .blog-posts-column img{
 	max-width: 100%;
@@ -1721,7 +1788,9 @@ nav ul li:hover #MegaMenu{
 	transform: scale(1.1);
 }
 
-.blog-posts p, .blog-posts-learnMore, .blog-posts-commentCount{
+.blog-posts p,
+.blog-learnMore,
+.blog-commentCount{
 	font-size: 1.4em;
 }
 
@@ -1729,15 +1798,38 @@ nav ul li:hover #MegaMenu{
 	margin-bottom: 20px;
 }
 
-.blog-posts-learnMore{
+.blog-learnMore{
 	float: left;
 	display:inline-block;
 }
 
-.blog-posts-commentCount{
+.blog-commentCount{
 	float: right;
 	display:inline-block;
 	margin-bottom: 30px;
+	position: relative;
+}
+
+.icon-bubbles2{
+	/*color: green;*/
+}
+
+.icon-bubbles2:before {
+    content: "\e96d";
+		/*color: red;*/
+}
+
+.blog-commentCount:before{
+	/*content: "\e96d";*/
+	height: 10px;
+	width: 10px;
+	left: -30px;
+	position: absolute;
+}
+
+a:visited .blog-commentCount:before,
+a:visited .blog-title{
+	color: #6d0fae;
 }
 
 @media screen and (max-width: 926px){
@@ -1804,7 +1896,7 @@ nav ul li:hover #MegaMenu{
 		display:inline-block;
 		margin: 0;
 	}
-	.blog-posts-commentCount{
+	.blog-commentCount{
 		margin-bottom: 0;
 		vertical-align: bottom;
 	}
@@ -2089,6 +2181,7 @@ footer{
 	height: 640px;
 	background-color: #1f2a32;
 	text-align: center;
+
 }
 
 .footer-content{
@@ -2182,8 +2275,7 @@ footer{
 	/* font-size: 1.2em; */
 }
 .post-date{
-	font-weight: bold;
-	font-size: 1.4em;
+	margin-bottom: 5px;
 }
 .footer-posts li{
 	display: block;
@@ -2206,8 +2298,10 @@ footer{
 		width: 80px;
 	}
 
-	.follow-us{
-		width: auto;
+	.social-footer-widget{
+		/*width: auto;*/
+		text-align: center;
+		margin: auto;
 		/*background-color: red;*/
 	}
 
@@ -2356,4 +2450,26 @@ footer{
 
 .under-construction{
 	height: 100vh;
+}
+
+
+/*.single-post .site-content{
+	color: #fff;
+}
+*/
+
+.blog-page{
+	background-color: #fff;
+	width: 80%;
+	margin: 0 auto;
+}
+
+.blog-page{
+	color: #aaa;
+}
+
+.blog-page-header{
+	width: 1680px;
+	height: 300px;
+	background-color: red;
 }

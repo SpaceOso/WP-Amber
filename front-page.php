@@ -36,20 +36,33 @@ get_header(); ?>
 		=============== -->
 		<div class="portfolio">
 			<h2>Latest works</h2>
-			<p>That we can tuck in our children at night and know that they are fed and clothed and safe from harm. Our trials and triumphs became at once unique and universla.</p>
+		<div class="portfolio-description">
+				<p>That we can tuck in our children at night and know that they are fed and clothed and safe from harm. Our trials and triumphs became at once unique and universla.</p>
+		</div>
 			<div id='post-viewer' class="portfolio-content">
-				<div class="port-row">	<!-- select all the portfolio posts -->
+				<div class="port-row">
+					<!-- select all the portfolio posts -->
 					<?php $myquery  = new WP_Query('category_name=portfolio');
 					if( $myquery -> have_posts() ) :
 					 	while( $myquery ->have_posts() ) :
 							$myquery ->the_post(); ?>
 						<div id='<?php echo(get_the_title())?>' class="portfolio-column">
-							<a href="<?php the_permalink() ?>">
-								<?php the_post_thumbnail( ); ?>
-							</a>
+							<div class="port-img-container">
+								<div class='img-info'>
+									<div class="img-name">
+										<p class="title"><?php echo( get_the_title() ); ?></p>
+										<p class="torquoise-font"><?php echo( get_the_category_list(", ") ); ?> </p>
+									</div>
+									<div class="img-likes">
+										<?php if( function_exists('dot_irecommendthis') ) dot_irecommendthis(); ?>
+									</div>
+								</div>
+								<a href="<?php the_permalink() ?>">
+									<?php the_post_thumbnail( ); ?>
+								</a>
+							</div>
 						</div>
-					<?php
-						endwhile;
+					<?php	endwhile;
 					endif;?>
 					<? wp_reset_postdata(); ?>
 				</div>
@@ -135,14 +148,21 @@ get_header(); ?>
 							$blogQuery->the_post();	?>
 				<div class="blog-posts-column">
 					<div class="blog-image-wrapper">
-						<?php the_post_thumbnail();?>
+						<a href="<?php the_permalink(); ?>">
+							<?php the_post_thumbnail();?>
+						</a>
 					</div>
 					<div class="blog-posts-content">
-						<h3 class="torquoise-font"><?php echo(get_the_title());?></h3>
+						<!-- post title -->
+						<a href="<?php the_permalink(); ?>">
+							<div>
+								<h3 class="torquoise-font blog-title"><?php echo(get_the_title());?></h3>
+							</div>
+						</a>
 						<p class="gray-font"><?php echo(get_the_content());?></p>
 						<div class="blog-posts-details">
-							<a class="torquoise-font blog-posts-learnMore" href="#">Learn more</a>
-							<div class="gray-font blog-posts-commentCount">450</div>
+							<a class="torquoise-font blog-learnMore" href="<?php the_permalink(); ?>">Learn more</a>
+							<a href="<?php the_permalink(); ?>"><div class="gray-font blog-commentCount icon-bubbles2">450</div></a>
 						</div>
 					</div>
 				</div>
@@ -241,5 +261,5 @@ get_header(); ?>
 	</div><!-- #primary -->
 
 <?php
-// get_sidebar();
+// 
 get_footer();

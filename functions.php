@@ -163,6 +163,32 @@ function rico_amber_widgets_init() {
 		'before_title'  => '<h2 class="widget-title">',
 		'after_title'   => '</h2>',
 	) );
+
+	$args = array(
+		'name'          => __( ' Social-Icons' ),
+		'id'            => 'social_icons',
+		// 'description'   => '',
+		'class'         => 'social-widget',
+		'before_widget' => '<div id="social-footer" class="social-footer-widget">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h2 class="Follow Us">',
+		'after_title'   => '</h2>'
+	);
+
+	register_sidebar( $args );
+
+
+	$postsArgs = array(
+		'name'              => __( 'Current-Posts' ),
+		'id'                => 'current_posts',
+		'class'             => 'posts-widget',
+		'before_widget'     => '<div id="currentPosts" class="currentPosts-widget">',
+		'after_widget'      => '</div>',
+		'before_title'      => '<h2 class="Recent Posts">',
+		'after_title'       => '</h2>'
+	);
+
+	register_sidebar($postsArgs);
 }
 add_action( 'widgets_init', 'rico_amber_widgets_init' );
 

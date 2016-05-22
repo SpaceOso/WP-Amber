@@ -37,5 +37,6 @@
 				'</span>'
 			);
 		?>
-	</footer><!-- .entry-footer -->
+	</footer>
+	<?php if( function_exists('dot_irecommendthis') ) dot_irecommendthis(); ?>
 </article><!-- #post-## -->
