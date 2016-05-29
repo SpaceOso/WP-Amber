@@ -50,10 +50,14 @@ get_header(); ?>
 							<div class="port-img-container">
 								<!--info icons-->
 								<ul class="port-icons">
-									<li class="port-like"></li>
-									<li class="port-zoom"></li>
+									<li class="port-like">
+										<?php if( function_exists('dot_irecommendthis') ) dot_irecommendthis(); ?>
+									</li>
+									<li class="port-zoom">
+										<a rel='lightbox' href="<?php the_post_thumbnail_url(); ?>"></a>
+									</li>
 									<li class="port-link">
-										<a href="http://miguelricodev.com/"></a>
+										<a href="<?php the_permalink(); ?>"></a>
 									</li>
 								</ul>
 								<!--bottom panel-->
@@ -66,13 +70,12 @@ get_header(); ?>
 										<div class="heart">
 											<img src="<?php echo(get_template_directory_uri());?>/images/heart.svg">
 										</div>
-										<?php if( function_exists('dot_irecommendthis') ) dot_irecommendthis(); ?>
+										<p class="countUpdate"><?php echo( dot_column_content('likes', $post->ID) ); ?></p>
 									</div>
 								</div>
 								<!--background image-->
 								<div class="overlay"></div>
-									<?php the_post_thumbnail(); ?>
-
+								<?php the_post_thumbnail('portfolio-scroller'); ?>
 							</div>
 						</div>
 					<?php	endwhile;

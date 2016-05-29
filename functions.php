@@ -132,7 +132,9 @@ function rico_amber_setup() {
 		'default-color' => 'ffffff',
 		'default-image' => '',
 	) ) );
+	add_image_size('portfolio-scroller', 290, 290, true);
 }
+
 endif;
 add_action( 'after_setup_theme', 'rico_amber_setup' );
 
@@ -146,6 +148,8 @@ add_action( 'after_setup_theme', 'rico_amber_setup' );
 function rico_amber_content_width() {
 	$GLOBALS['content_width'] = apply_filters( 'rico_amber_content_width', 640 );
 }
+
+
 add_action( 'after_setup_theme', 'rico_amber_content_width', 0 );
 
 /**
@@ -313,3 +317,4 @@ function company_features_banner(){
 	wp_reset_postdata();
 
 }
+
