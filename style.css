@@ -1475,7 +1475,7 @@ nav ul li:hover #MegaMenu{
 .portfolio-description p{
 	text-align: center;
 	font-size: 1.8em;
-	width: 750px;
+	width: 60%;
 	margin: 80px auto 50px auto;
 }
 
@@ -1484,18 +1484,13 @@ nav ul li:hover #MegaMenu{
 	position: relative;
 	/*width: auto;*/
 	text-align: center;
-	width: 290px;
-	height: 290px;
+	/*width: 290px;*/
+	/*height: 290px;*/
 	overflow: hidden;
 }
 
 .port-img-container img{
-	/*position: absolute;*/
-	/*width: 800px;*/
-	/*max-width: 100%;*/
-	/*max-height: 100%;*/
 	height: 100%;
-
 }
 
 .port-icons{
@@ -1578,7 +1573,7 @@ nav ul li:hover #MegaMenu{
 }
 
 .port-img-container:hover .img-info{
-	/*bottom: -100px;*/
+	bottom: -100px;
 }
 
 .overlay{
@@ -1633,6 +1628,7 @@ nav ul li:hover #MegaMenu{
 	float: right;
 	display: inline-block;
 	text-align: center;
+	color: #02baab;
 }
 
 .portfolio-content{
@@ -1661,12 +1657,14 @@ nav ul li:hover #MegaMenu{
 	cursor: pointer;
 }
 
-@media screen and (max-width: 908px){
-	.portfolio p{
-	text-align: center;
-	font-size: 1.8em;
-	width: 80%;	/* 750 / 1680 */
-	margin: 88px auto 50px auto;
+@media screen and (max-width: 1025px){
+	.port-icons{
+		bottom:calc(50%);
+		-webkit-transform: translateY(50%);
+		-moz-transform: translateY(50%);
+		-ms-transform: translateY(50%);
+		-o-transform: translateY(50%);
+		transform: translateY(50%);
 	}
 }
 
