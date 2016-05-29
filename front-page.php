@@ -21,45 +21,58 @@ get_header(); ?>
 		<main id="main" class="site-main" role="main">
 			<div class="main-banner">
 				<!-- SPLASH -->
-				<h1 class="splashText"><span class="torquoise-font">Creating a unique look.</span><br>Never been easier.</h1>
+				<h1 class="splashText"><span class="torquoise-font"><?php echo( get_field('section_title',167) ); ?> </span><br><?php echo( get_field('section_title', 171 ) ); ?></h1>
 			</div> <!-- main-banner -->
 		<!-- ===============
 			INFO 01
 		=============== -->
 		<div class="info">
-			<h2>Steal of the month</h2>
-			<p>That we can tuck in our children at night and know that they are fed and clothed and safe from harm. Our trials and triumphs became at once unique and universla.</p>
+			<h2><?php echo( get_field('section_title', 177) ); ?></h2>
+			<p><?php echo( get_field( 'home_page_info', 177 )); ?></p>
 			<div id="btn" class="info-button">PURCHASE NOW</div>
 		</div>
 		<!-- ===============
 			PORTFOLIO
 		=============== -->
 		<div class="portfolio">
-			<h2>Latest works</h2>
+			<h2><?php echo( get_field( 'section_title', 181 ) ); ?></h2>
 		<div class="portfolio-description">
-				<p>That we can tuck in our children at night and know that they are fed and clothed and safe from harm. Our trials and triumphs became at once unique and universla.</p>
+				<p><?php echo( get_field( 'home_page_info', 181  )); ?></p>
 		</div>
 			<div id='post-viewer' class="portfolio-content">
 				<div class="port-row">
 					<!-- select all the portfolio posts -->
 					<?php $myquery  = new WP_Query('category_name=portfolio');
 					if( $myquery -> have_posts() ) :
-					 	while( $myquery ->have_posts() ) :
+						while( $myquery ->have_posts() ) :
 							$myquery ->the_post(); ?>
 						<div id='<?php echo(get_the_title())?>' class="portfolio-column">
 							<div class="port-img-container">
+								<!--info icons-->
+								<ul class="port-icons">
+									<li class="port-like"></li>
+									<li class="port-zoom"></li>
+									<li class="port-link">
+										<a href="http://miguelricodev.com/"></a>
+									</li>
+								</ul>
+								<!--bottom panel-->
 								<div class='img-info'>
 									<div class="img-name">
 										<p class="title"><?php echo( get_the_title() ); ?></p>
 										<p class="torquoise-font"><?php echo( get_the_category_list(", ") ); ?> </p>
 									</div>
 									<div class="img-likes">
+										<div class="heart">
+											<img src="<?php echo(get_template_directory_uri());?>/images/heart.svg">
+										</div>
 										<?php if( function_exists('dot_irecommendthis') ) dot_irecommendthis(); ?>
 									</div>
 								</div>
-								<a href="<?php the_permalink() ?>">
-									<?php the_post_thumbnail( ); ?>
-								</a>
+								<!--background image-->
+								<div class="overlay"></div>
+									<?php the_post_thumbnail(); ?>
+
 							</div>
 						</div>
 					<?php	endwhile;
@@ -76,46 +89,38 @@ get_header(); ?>
 			FEATURES
 		=============== -->
 		<div class="features">
-			<h2>Superb features</h2>
+			<h2><?php echo( get_field( 'section_title', 183 )); ?></h2>
 			<div class="features-content">
 			<!-- first column -->
-				<div class="features-content-column">
-				<!-- first row -->
-					<div class="features-column-row">
-						<img src="<?php echo(get_template_directory_uri());?>/images/shape-star.svg">
-						<div class="features-row-text">
-							<h3>Brilliant creative design</h3>
-							<p>Ah, well! It means much the same thing, said the Duchess, digging her sharp little chin tino Alice's shoulder as she added, and the moral of that is m-dash.</p>
-						</div>
-					</div>
-					<!-- second row -->
-					<div class="features-column-row">
-						<img src="<?php echo(get_template_directory_uri());?>/images/shape-wand.svg">
-						<div class="features-row-text">
-							<h3>Incredible documentation</h3>
-							<p>Alice went timidly up to the doorm and knocked. 'There's no sort of use in knocking,' said the Footman, and that for two reasons.</p>
-						</div>
-					</div>
-				</div>
-				<!-- end of first column -->
-				<div class="features-content-column">
-					<!-- first row second column -->
-					<div class="features-column-row">
-						<img src="<?php echo(get_template_directory_uri());?>/images/shape-trophy.svg">
-						<div class="features-row-text">
-							<h3>On mouse over tittle</h3>
-							<p>Then they both bowed low, and their curls got entangled toether. Alice laughed so much at this, that she had to run back into the wood for frear of their hearing her.</p>
-						</div>
-					</div>
-					<!-- second row second column -->
-					<div class="features-column-row">
-						<img src="<?php echo(get_template_directory_uri());?>/images/shape-cloud.svg">
-						<div class="features-row-text">
-							<h3>Responsive & retina ready</h3>
-							<p>Alice went timidly up to the door, and knocked. Theres no sort of use in knocking, said the Footman, and that for two reasons. First, because I'm on the same side.</p>
-						</div>
-					</div>
-				</div>
+			<?php $args = array(
+				'post_type' => 'company-features',
+				'posts_per_page' => 4,
+			); ?>
+			<?php $companyQuery = new WP_Query( $args);
+				$postCount = 0;
+				$currentCount = 0;
+				if ( $companyQuery->have_posts() ) :
+					$postCount = $companyQuery->post_count;
+					while( $companyQuery->have_posts() ) :
+						//We want to create two columns, in each column add 2 posts
+						 while( $currentCount < 2 ) : ?>
+							<div class="features-content-column">
+								<?php for( $i = 0; $i < $postCount / 2; $i++ ) : ?>
+									<?php $companyQuery->the_post(); ?>
+										<div class="features-column-row">
+											<img class="style-convert" src="<?php the_post_thumbnail_url(); ?>">
+											<div class="features-row-text">
+												<h3><?php echo( get_the_title() ); ?></h3>
+												<p><?php the_field( 'test_field', null ); ?></p>
+											</div>
+										</div>
+								<?php endfor; ?>
+								<?php $currentCount++; ?>
+							</div>
+						 <?php endwhile; ?>
+				<?php endwhile; ?>
+			<?php endif;  ?>
+			<?php wp_reset_postdata(); ?>
 			</div>
 		</div>
 		<!-- ===============
@@ -127,12 +132,12 @@ get_header(); ?>
 					if( $mynewQuery -> have_posts() ) :
 						while( $mynewQuery->have_posts() ) :
 							$mynewQuery->the_post(); ?>
-					<div>
-						<h3><?php echo(get_the_content()); ?></h3>
-						<p class="torquoise-font"><?php echo(get_post_meta( $post->ID, "source", true )); ?></p>
-				</div>
-				<?php endwhile;
-				endif;?>
+							<div>
+								<h3><?php echo(get_the_content()); ?></h3>
+								<p class="torquoise-font"><?php echo(get_post_meta( $post->ID, "source", true )); ?></p>
+							</div>
+						<?php endwhile;
+					endif;?>
 				<?php wp_reset_postdata(); ?>
 			</div>
 		</div>
@@ -140,7 +145,7 @@ get_header(); ?>
 			BLOG POSTS
 		=============== -->
 		<div class="blog-posts">
-			<h2 class="gray-font">Latest blog posts</h2>
+			<h2 class="gray-font"><?php echo( get_field( 'section_title', 192 ) ); ?></h2>
 				<!-- first column -->
 				<?php $blogQuery = new WP_Query('category_name=articles&posts_per_page=3');
 					if($blogQuery -> have_posts() ) :

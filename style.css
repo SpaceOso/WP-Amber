@@ -1095,7 +1095,7 @@ nav{
 
 button:focus{
 	box-shadow: none;
-	border-color: none;
+	border-color: initial;
 }
 
 
@@ -1472,11 +1472,83 @@ nav ul li:hover #MegaMenu{
 	background-color: #fff;
 }
 
+.portfolio-description p{
+	text-align: center;
+	font-size: 1.8em;
+	width: 750px;
+	margin: 80px auto 50px auto;
+}
+
 .port-img-container{
 	display: inline-block;
 	position: relative;
 	width: auto;
+	text-align: center;
+}
 
+.port-icons{
+	z-index: 3;
+	position: absolute;
+	bottom: 0;
+	left: calc(50% - 20px); /*place at half of parent minus half of itself*/
+	-webkit-transform: translateY(-50%);
+	-moz-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	-o-transform: translateY(-50%);
+	transform: translateY(-50%);
+}
+
+.port-icons li{
+	/*display: none;*/
+	width: 40px;
+	height: 40px;
+	background-color: #02baab;
+	margin: 10px 0;
+	-webkit-border-radius:50%;
+	-moz-border-radius:50%;
+	border-radius:50%;
+	/*text-align: center;*/
+}
+
+.port-like{
+	background-image: url("images/heart.svg");
+}
+
+.port-zoom{
+	background-image: url("images/icon-zoom-in.svg");
+}
+
+.port-link{
+	background-image: url("images/icon-link.svg");
+}
+
+.port-like,
+.port-zoom,
+.port-link{
+	display: block;
+	visibility: hidden;
+	opacity: 0;
+	background-size: 50%;
+	background-repeat: no-repeat;
+	background-position: center;
+	-webkit-transition: visibility 0s, opacity 0.5s linear;
+	-moz-transition: visibility 0s, opacity 0.5s linear;
+	-ms-transition: visibility 0s, opacity 0.5s linear;
+	-o-transition: visibility 0s, opacity 0.5s linear;
+	transition: visibility 0s, opacity 0.5s linear;
+}
+
+.port-img-container:hover .port-like,
+.port-img-container:hover .port-zoom,
+.port-img-container:hover .port-link{
+	visibility: visible;
+	opacity: 1;
+}
+
+.port-icons a{
+	height: 100%;
+	width: 100%;
+	display: block;
 }
 
 .img-info{
@@ -1489,11 +1561,45 @@ nav ul li:hover #MegaMenu{
 	left: 0;
 	text-align: left;
 	padding: 10px;
+	transition: bottom 0.5s;
 }
 
+.port-img-container:hover .img-info{
+	bottom: -100px;
+}
+
+.overlay{
+	z-index: 1;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0;
+	display: inline-block;
+	background-color: #000;
+	opacity: 0;
+	-webkit-transition: opacity 0.5s;
+	-moz-transition: opacity 0.5s;
+	-ms-transition: opacity 0.5s;
+	-o-transition: opacity 0.5s;
+	transition: opacity 0.5s;
+}
+
+.port-img-container:hover .overlay{
+	opacity: .5;
+}
 .img-name{
 	display: inline-block;
 	float: left;
+}
+
+.img-likes .heart{
+	margin-bottom: 5px;
+}
+
+
+.img-likes .heart img{
+	width: 1.4em;
+	height: 1.4em;
 }
 
 .img-name .title{
@@ -1513,6 +1619,7 @@ nav ul li:hover #MegaMenu{
 .img-likes{
 	float: right;
 	display: inline-block;
+	text-align: center;
 }
 
 .portfolio-content{
@@ -1600,12 +1707,14 @@ nav ul li:hover #MegaMenu{
 	height: 6px;
 	background-color: #eee;
 }
-.features img{
+.features img,
+.features svg{
 	float: left;
 	width: 38px;
 	height: 38px;
 	/* display:block; */
 }
+
 
 .features-content{
 	/* margin-left: 22.321428571429%; */
@@ -1745,7 +1854,7 @@ nav ul li:hover #MegaMenu{
 	color: #6d0fae;
 }
 
-/*.blog-posts h2{
+.blog-posts h2{
 	text-align: center;
 	margin: 80px auto 40px auto;
 	position: relative;
@@ -1759,7 +1868,7 @@ nav ul li:hover #MegaMenu{
 	width: 60px;
 	height: 6px;
 	background-color: #eee;
-}*/
+}
 
 .blog-posts-column{
 	vertical-align: top;
@@ -2277,9 +2386,9 @@ footer{
 .post-date{
 	margin-bottom: 5px;
 }
-.footer-posts li{
+.footer-posts li,
+.social-footer-widget li{
 	display: block;
-
 }
 
 @media screen and (max-width: 919px){
@@ -2298,25 +2407,25 @@ footer{
 		width: 80px;
 	}
 
-	.social-footer-widget{
+	.social-footer-widget ul{
 		/*width: auto;*/
-		text-align: center;
-		margin: auto;
+		/*text-align: center;*/
+		/*margin: auto;*/
 		/*background-color: red;*/
 	}
 
 	.follow-us li{
-		text-align: center;
-		display: block;
+		/*text-align: center;*/
+		/*display: block;*/
 	}
 
-	.follow-us img{
+	.social-icons-list-label{
+		display: none;
+	}
+
+	.social-icons-list-label img{
 		display: block;
 		margin: auto;
-	}
-
-	.follow-us p{
-		display: none;
 	}
 
 	.tweet{
@@ -2381,17 +2490,18 @@ footer{
 
 	}
 
-	.follow-us{
+	.social-footer-widget{
 		width: 90%;
 		margin: 0 auto;
 		text-align: center;
 	}
-	.follow-us li{
+	.social-footer-widget li{
 		display: inline-block;
 		width: calc(100% / 5);
 		padding: 0 2%;
 		float: left;
 	}
+
 
 	.follow-us li img{
 		max-width: 100%;

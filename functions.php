@@ -232,3 +232,84 @@ require get_template_directory() . '/inc/customizer.php';
  * Load Jetpack compatibility file.
  */
 require get_template_directory() . '/inc/jetpack.php';
+
+
+function company_features_init(){
+	$args = array(
+		'label' => 'Company Features',
+		'public' => true,
+		'show_ui' => true,
+		'capability_type' => 'post',
+		'hierarchical' => false,
+		'rewrite' => array('slug' => 'company-features'),
+		'query_var' => true,
+		'menu_icon' => 'dashicons-grid-view',
+		'supports' => array(
+			'categories',
+			'title',
+			'editor',
+			'excerpt',
+			'trackbacks',
+			'custom-fields',
+//			'comments',
+			'revisions',
+			'thumbnail',
+			'author',
+			'page-attributes',)
+	);
+	register_post_type('company-features', $args );
+}
+add_action('init', 'company_features_init');
+
+function section_titles_init(){
+	$args = array(
+		'label' => 'Page Section Titles',
+		'public' => true,
+		'show_ui' => true,
+		'capability_type' => 'post',
+		'hierarchical' => false,
+		'rewrite' => array('slug' => 'section-titles'),
+		'query_var' => true,
+		'menu_icon' => 'dashicons-editor-ul',
+		'supports' => array(
+			'categories',
+			'title',
+			'editor',
+			//'excerpt',
+			//'trackbacks',
+			'custom-fields',
+			//'comments',
+			'revisions',
+			//'thumbnail',
+			//'author',
+			//'page-attributes',
+			)
+	);
+	register_post_type('section-titles', $args );
+}
+add_action('init', 'section_titles_init');
+/**
+ *
+ */
+
+
+function company_features_banner(){
+	$query = new WP_Query( array(
+		'post_type' => 'company-features',
+	));
+
+
+	if ( $query->have_posts() ) { ?>
+		<div class="banner-box">
+
+			<?php while ( $query->have_posts() ) : $query->the_post(); ?>
+			<div id="post-<?php the_ID(); ?>">
+					<p><?php echo( get_the_content() ); ?></p>
+			</div>
+			<?php endwhile; ?>
+
+		</div>
+	<?php }
+	wp_reset_postdata();
+
+}
