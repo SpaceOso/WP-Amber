@@ -133,6 +133,7 @@ function rico_amber_setup() {
 		'default-image' => '',
 	) ) );
 	add_image_size('portfolio-scroller', 290, 290, true);
+	add_image_size('blog-posts', 290, 220, true);
 }
 
 endif;

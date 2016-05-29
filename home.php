@@ -216,7 +216,7 @@ get_header(); ?>
 							$team_query -> the_post(); ?>
 				<div class="our-team-column">
 					<div class="team-member-info">
-						<div id="<?php echo($post->ID); ?>" class="team-member-name">
+						<div id="<?php echo($post->ID); ?>" class="team-member-info">
 							<p><?php echo( get_the_title() );?></p>
 							<p><?php echo( get_post_meta($post->ID, 'job-title', true) ); ?></p>
 						</div>

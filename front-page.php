@@ -29,7 +29,9 @@ get_header(); ?>
 		<div class="info">
 			<h2><?php echo( get_field('section_title', 177) ); ?></h2>
 			<p><?php echo( get_field( 'home_page_info', 177 )); ?></p>
-			<div id="btn" class="info-button">PURCHASE NOW</div>
+			<div id="btn" class="info-button">
+				<a href="#">PURCHASE NOW</a>
+			</div>
 		</div>
 		<!-- ===============
 			PORTFOLIO
@@ -157,7 +159,7 @@ get_header(); ?>
 				<div class="blog-posts-column">
 					<div class="blog-image-wrapper">
 						<a href="<?php the_permalink(); ?>">
-							<?php the_post_thumbnail();?>
+							<?php the_post_thumbnail('blog-posts');?>
 						</a>
 					</div>
 					<div class="blog-posts-content">
@@ -170,7 +172,9 @@ get_header(); ?>
 						<p class="gray-font"><?php echo(get_the_content());?></p>
 						<div class="blog-posts-details">
 							<a class="torquoise-font blog-learnMore" href="<?php the_permalink(); ?>">Learn more</a>
-							<a href="<?php the_permalink(); ?>"><div class="gray-font blog-commentCount icon-bubbles2">450</div></a>
+							<div class="gray-font blog-commentCount icon-bubbles2">
+								<a href="<?php the_permalink(); ?>">450</a>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -247,18 +251,23 @@ get_header(); ?>
 						while( $team_query -> have_posts()) :
 							$team_query -> the_post(); ?>
 				<div class="our-team-column">
-					<div class="team-member-info">
+					<!--<div class="team-member-info">-->
 						<div class='team-member-picture'>
 							<?php the_post_thumbnail(); ?>
-								<div class="member-name-wrapper">
-									<div id="<?php echo($post->ID); ?>" class="team-member-name">
-										<p><?php echo( get_the_title() );?></p>
-										<p><?php echo( get_post_meta($post->ID, 'job-title', true) ); ?></p>
-									</div>
+							<div class="member-name-slider">
+								<div id="<?php echo($post->ID); ?>" class="team-member-info">
+									<p class="team-name"><?php echo( get_the_title() );?></p>
+									<p class="team-title gray-font"><?php echo( get_post_meta($post->ID, 'job-title', true) ); ?></p>
 								</div>
+								<div>
+									<p class="team-excerpt gray-font"><?php echo( get_the_excerpt() ); ?></p>
+								</div>
+							</div>
 						</div> <!-- member-picture -->
-						<div id="btn" class="team-profile-btn torquoise-font">PROFILE</div>
-					</div>
+						<div  id="btn" class="team-profile-btn torquoise-font">
+							<a href="<?php echo( get_the_permalink() ); ?>">PROFILE</a>
+						</div>
+					<!--</div>-->
 				</div>
 				<?php endwhile;
 					endif;?>
