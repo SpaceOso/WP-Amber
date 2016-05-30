@@ -293,29 +293,70 @@ function section_titles_init(){
 	register_post_type('section-titles', $args );
 }
 add_action('init', 'section_titles_init');
+
+function header_images_init(){
+	$args = array(
+		'label' => 'Header Images',
+		'public' => true,
+		'show_ui' => true,
+		'capability_type' => 'post',
+		'hierarchical' => false,
+		'rewrite' => array('slug' => 'header-images'),
+		'query_var' => true,
+		'menu_icon' => 'dashicons-format-gallery',
+		'supports' => array(
+			'categories',
+			'title',
+			'editor',
+			'excerpt',
+			//'trackbacks',
+			'custom-fields',
+			//'comments',
+			'revisions',
+			'thumbnail',
+			//'author',
+			//'page-attributes',
+		)
+	);
+	register_post_type('header_images', $args );
+}
+add_action('init', 'header_images_init');
 /**
  *
  */
 
 
-function company_features_banner(){
-	$query = new WP_Query( array(
-		'post_type' => 'company-features',
-	));
+function pw_show_gallery_image_urls(  ) {
 
+	global $post;
 
-	if ( $query->have_posts() ) { ?>
-		<div class="banner-box">
+	// Only do this on singular items
+	// if( ! is_singular() )
+	// 	return $content;
+	//
+	// // Make sure the post has a gallery in it
+	// if( ! has_shortcode( $post->post_content, 'gallery' ) )
+	// 	return $content;
 
-			<?php while ( $query->have_posts() ) : $query->the_post(); ?>
-			<div id="post-<?php the_ID(); ?>">
-					<p><?php echo( get_the_content() ); ?></p>
-			</div>
-			<?php endwhile; ?>
+	// Retrieve the first gallery in the post
+	$gallery = get_post_gallery_images( $post );
 
-		</div>
-	<?php }
-	wp_reset_postdata();
+	$image_list = '<div class="header-scroll">';
+
+	// Loop through each image in each gallery
+	foreach( $gallery as $image_url ) {
+
+		$image_list .= '<div>' . '<img src="' . $image_url . '">' . '</div>';
+
+	}
+
+	$image_list .= '</div>';
+
+	// Append our image list to the content of our post
+	
+
+	return $image_list;
 
 }
+add_filter( 'the_content', 'pw_show_gallery_image_urls' );
 

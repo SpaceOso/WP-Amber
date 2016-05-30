@@ -20,8 +20,31 @@ get_header(); ?>
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
 			<div class="main-banner">
+				<?php $args = array(
+					'post_type' => 'header_images',
+					'orderby'   => 'date',
+					'order'     => 'ASC',
+				); ?>
+				<?php $bannerQuery = new WP_Query($args)?>
+					<?php if ($bannerQuery->have_posts() ) : ?>
+						<div class="header-scroll">
+						<?php while($bannerQuery->have_posts() ) : ?>
+							<?php $bannerQuery->the_post();
+								$image = get_field('header_image');?>
+							<div class="header-slider">
+								<img src="<?php echo( $image['url'] ); ?>">
+								<div class="splashText">
+									<h1><span style="color: <?php echo( get_field('header_text_color') );?>"><?php echo( get_field('header_text') ); ?> </span>
+										<br><?php echo( get_field('sub_header_text' ) ); ?></h1>
+								</div>
+							</div>
+
+							<?php endwhile;
+							endif;
+							wp_reset_postdata();?>
+						</div>
 				<!-- SPLASH -->
-				<h1 class="splashText"><span class="torquoise-font"><?php echo( get_field('section_title',167) ); ?> </span><br><?php echo( get_field('section_title', 171 ) ); ?></h1>
+
 			</div> <!-- main-banner -->
 		<!-- ===============
 			INFO 01
