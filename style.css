@@ -1178,15 +1178,21 @@ nav ul li a{
 
 @media screen and (max-width: 890px){
 	.nav-content{
-		text-align: center;;
+		text-align: center;
+		height: 60px;
+		vertical-align: top;
 	}
 
 	.logo{
 		/*display: block;*/
 		width: 100px;
+		height: 100%;
 		margin: 0 5% 0 2%;
 	}
 
+	nav ul li{
+		height: 60px;
+	}
 
 	nav ul li a{
 		margin: 0 auto;
@@ -1233,7 +1239,7 @@ nav ul li a{
 
 		position: absolute;
 		/*background-color: rgba(0,0,0, 0.5);*/
-		top:  72px;
+		top:  60px;
 		left: 0;
 		height: 350px;
 		width: 100%;
@@ -1538,6 +1544,11 @@ nav ul li:hover #nav-count-6{
 	margin: 88px auto 0 auto;
 }
 
+.info-button{
+	display: inline-block;
+	margin: 50px auto 100px auto;
+}
+
 .info-button a{
 	font-size: 1.2em;
 	display:inline-block;
@@ -1547,7 +1558,6 @@ nav ul li:hover #nav-count-6{
 	line-height: .6em;
 	padding: 15px;
 	border: 3px solid #02baab;
-	margin: 50px auto 100px auto;
 }
 
 #btn a{
