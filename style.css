@@ -1267,74 +1267,74 @@ nav ul li a{
 	}
 }
 
-#Home
+#nav-count-0
 {
 	background-color: #ff9900;
 	transition: background-color .5s;
 }
 
-nav ul li:hover #Home{
+nav ul li:hover #nav-count-0 {
 	background-color: #40DFFF;
 }
 
-#Typography
+#nav-count-1
 {
 	background-color: #fc7100;
 	transition: background-color .5s;
 }
 
-nav ul li:hover #Typography{
+nav ul li:hover #nav-count-1 {
 	/*background-color: #FE320D;*/
 	background-color: #14C97E;
 }
 
-#Blog
+#nav-count-2
 {
 	background-color: #e51c5e;
 	transition: background-color .5s;
 }
 
-nav ul li:hover #Blog{
+nav ul li:hover #nav-count-2{
 	background-color: #69B204;
 }
 
-#Pages
+#nav-count-3
 {
 	background-color: #ae0f8d;
 	transition: background-color .5s;
 }
 
-nav ul li:hover #Pages{
+nav ul li:hover #nav-count-3{
 	background-color: #CFE12A;
 }
 
-#Elements
+#nav-count-4
 {
 	background-color: #6d0fae;
 	transition: background-color .5s;
 }
 
-nav ul li:hover #Elements{
+nav ul li:hover #nav-count-4{
 	background-color: #E12AB3;
 }
 
-#Ecommerse
+#nav-count-5
 {
 	background-color: #33227a;
 	transition: background-color .5s;
 }
 
-nav ul li:hover #Ecommerse{
+nav ul li:hover #nav-count-5{
 	background-color: #CD98E0;
 }
 
-#MegaMenu
+#nav-count-6
 {
 	background-color: #0c8fcc;
 	transition: background-color .5s;
 }
 
-nav ul li:hover #MegaMenu{
+nav ul li:hover #nav-count-6{
 	background-color: #284AFF;
 }
 /* ---------------------------------------------------

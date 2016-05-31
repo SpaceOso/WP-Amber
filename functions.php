@@ -7,11 +7,14 @@
  * @package Rico-Amber
  */
 
+global $pageCountNumber;
+global $ricoCount;
+$ricoCount = 0;
 
 class Rico_Nav_List extends Walker_Nav_Menu
 {
 
-    function start_lvl( &$output, $depth = 0, $args = array() )
+	function start_lvl( &$output, $depth = 0, $args = array() )
     {
         $output .= "\n$indent<ul>\n";
     }
@@ -25,12 +28,16 @@ class Rico_Nav_List extends Walker_Nav_Menu
     function start_el( &$output, $object, $depth = 0, $args = array(), $current_object_id = 0 )
     {
     	global $post;
+		global $ricoCount;
     	$output .= "<li>\n";
     	$page = get_page_by_title($object->title);
     	$pageID = get_post_meta($page->ID, 'idName', true);
-    	$output .= sprintf("<div id='%s' class='nav-color'>\n", $pageID);
+    	// $output .= sprintf("<div id='%s' class='nav-color'>\n", $pageID);
+    	$output .= sprintf("<div id='nav-count-%s' class='nav-color'>\n", $ricoCount );
     	$output .= "</div>";
     	$output .= sprintf("<a href='%s'>%s", $object->url, $object->title);
+	    $ricoCount++;
+
     }
 
 	function end_el( &$output, $object, $depth = 0, $args = array() )
@@ -42,7 +49,7 @@ class Rico_Nav_List extends Walker_Nav_Menu
 
 function sb_scroller_scripts() {
     wp_enqueue_script( 'jquery' );
-	   wp_register_script( 'jqueryui', 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js');
+	wp_register_script( 'jqueryui', 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js');
     wp_enqueue_script( 'jqueryui' );
     wp_enqueue_script('jquery-effects-drop');
     wp_enqueue_script('jquery-effects-slide');
