@@ -20,12 +20,19 @@
 
 		expSection = $('.experience').offset().top;
 
+		$('.header-scroll').slick({
+			infinite: true,
+			slidesToShow: 1,
+			slidesToScroll: 1,
+			arrows: false,
+			dots: true,
+			dotsClass: 'header-dots',
+		});
+
 		$('.port-row').slick({
 			infinite: true,
   			slidesToShow: 3,
   			slidesToScroll: 1,
-			//centerMode: true,
-			// variableWidth: true,
 			prevArrow: $('#port-prev'),
 			nextArrow: $('#port-next'),
 			responsive: [
@@ -154,13 +161,14 @@
 		$("#btn").on('click', clickTest );
 
 		$(".team-profile-btn").mouseenter(function() {
-			$( this ).closest(".team-member-info").find(".team-member-name")
+			$( this ).siblings(".team-member-picture").find(".member-name-slider")
 			.toggle('drop', {direction: 'down'});
+			// .toggle('drop');
 		});
 
 
 		$(".team-profile-btn").mouseleave(function() {
-			$( this ).closest(".team-member-info").find(".team-member-name")
+			$( this ).siblings(".team-member-picture").find(".member-name-slider")
 			.toggle('drop', {direction: 'down'});
 		});
 
