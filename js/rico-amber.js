@@ -11,14 +11,42 @@
 	var portPrev, portNext, portPostRow, portPostRowPositoin;
 	var navBarToggle;
 	var navMenu;
-	var expYear;
 	var $window = $(window);
-	var expSection;
+	var expSection = 500;
 	var expAnim = false;
+	var myCircle01, myCircle02, myCircle03;
+	var circles = [];
+	var circleImg = [];
+	var referenceCircle;
+	var circlesCreated = false;
 
+	function getWidth() {
+		return window.innerWidth / 15;
+	}
 	$(document).ready(function(){
 
+		//get the parent div of the experience section
 		expSection = $('.experience').offset().top;
+
+		$window.resize( function(e) {
+			if( !circlesCreated ){
+				// CreateCircles();
+			}
+
+			for (var i = 0; i < circles.length; i++) {
+				circles[i].updateRadius(getWidth());
+
+				circleImg[i].css({
+					'width': getWidth().toString(),
+					'height': getWidth().toString(),
+					'top': ( parseInt(circleImg[ i ].css("width") ) / 2).toString() + "px",
+				});
+			}
+		}); /*window.resize*/
+
+
+		
+		
 
 		$('.header-scroll').slick({
 			infinite: true,
@@ -87,17 +115,90 @@
 
 	});
 
-	function StartExpAnim(){
-		var animOptions = {
-			useEasing: false
+	function CreateCircles() {
+		circlesCreated = true;
+		myCircle01 = Circles.create({
+			id: 'circles-1',
+			radius: 112,
+			value: 500,
+			maxValue: 500,
+			width: 5,
+			text: function (value) {
+				return value;
+			},
+			colors: ['#bbb', '#fff'],
+			duration: 4000,
+			wrpClass: 'circles-wrp',
+			textClass: 'experience-count',
+			valueStrokeClass: 'circles-valueStroke',
+			maxValueStrokeClass: 'circles-maxValueStroke',
+			styleWrapper: true,
+			styleText: false
+		});
+
+		myCircle02 = Circles.create({
+			id: 'circles-2',
+			radius: 112,
+			value: 2500,
+			maxValue: 2500,
+			width: 5,
+			text: function (value) {
+				return value;
+			},
+			colors: ['#bbb', '#fff'],
+			duration: 4000,
+			wrpClass: 'circles-wrp',
+			textClass: 'experience-count',
+			valueStrokeClass: 'circles-valueStroke',
+			maxValueStrokeClass: 'circles-maxValueStroke',
+			styleWrapper: true,
+			styleText: false
+		});
+
+		myCircle03 = Circles.create({
+			id: 'circles-3',
+			radius: 112,
+			value: 10000,
+			maxValue: 10000,
+			width: 5,
+			text: function (value) {
+				return value;
+			},
+			colors: ['#bbb', '#fff'],
+			duration: 4000,
+			wrpClass: 'circles-wrp',
+			textClass: 'experience-count',
+			valueStrokeClass: 'circles-valueStroke',
+			maxValueStrokeClass: 'circles-maxValueStroke',
+			styleWrapper: true,
+			styleText: false
+		});
+
+		circles.push(myCircle01);
+		circles.push(myCircle02);
+		circles.push(myCircle03);
+
+		referenceCircle = $("#circles-1").find( "svg" )[0];
+		circleImg.push($(".circleImg-1"));
+		circleImg.push($(".circleImg-2"));
+		circleImg.push($(".circleImg-3"));
+		// console.log(referenceCircle.getAttributeNode('width') );
+		for (var i = 0; i < circles.length; i++) {
+			console.log('running this');
+			circles[i].updateRadius(getWidth());
+
+			circleImg[i].css({
+				'width': getWidth().toString(),
+				'height': getWidth().toString(),
+			});
+
+			circleImg[ i ].css({
+				'top': ( parseInt(circleImg[ i ].css("width") ) / 2).toString() + "px"
+			});
 		}
-		var expFirstAnim = new CountUp('exp-first', 0, 500, 0, 4, animOptions);
-		var expSecondAnim = new CountUp('exp-second', 0, 2500, 0, 4);
-		var expThirdAnim = new CountUp('exp-third', 0, 10000, 0, 4);
-		expFirstAnim.start();
-		expSecondAnim.start();
-		expThirdAnim.start();
-	}
+
+	} /*CreateCircles*/
+
 	// ==================================================
 	// 								WINDOW SCROLL
 	// ==================================================
@@ -105,48 +206,13 @@
 	//we need to check for scrolltop of company expereince
 	$window.scroll(function(){
 		if( !expAnim ){
-			if($window.scrollTop() >= expSection){
+			if($window.scrollTop() >= expSection - 200){
 				expAnim = true;
-				StartExpAnim();
+				console.log("creating");
+				CreateCircles();
 			}
 		}
 	})
-
-	function SlidePostRow(event){
-		//We'er probably going to want to move each post individually
-		//so we can tell when a post is outside of the viewer
-		//if we move the whole container when we move posts around it oculd collapse
-		//...actually that might work, if there's lag there might be snapping happening
-		//if post 1 is outside the width of container, make it post last
-		//post 2 now becomes post 1, check again
-		//do the same for last post. If past last is outside container width make it post 1
-		// post 2 stays the same, post 1 becomes last post. This is so they will loop
-		//probably want to disable the function while looping animation happens so it doesn't queue a bunch of hits
-
-
-		if(event.data.btn == 'prev'){
-			//if we hit the previous button we want to move positive
-			portPostRow.animate({
-			left: portPostRowPositoin.left + postWidth},
-			1000, function() {
-				/* stuff to do after animation is complete */
-				portPostRowPositoin = portPostRow.position();
-				console.log(portPostRowPositoin.left);
-			});
-		}else if(event.data.btn == 'next'){
-			//if we hit the next button we want to move negative
-			portPostRow.animate({
-			left: portPostRowPositoin.left - postWidth},
-			1000, function() {
-				/* stuff to do after animation is complete */
-				portPostRowPositoin = portPostRow.position();
-				console.log(portPostRowPositoin.left);
-			});
-		}
-
-		console.log( $(portColumns[0]).is(':visible') );
-	}
-
 
  	$(function() {
 

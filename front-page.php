@@ -112,7 +112,7 @@ get_header(); ?>
 				<div id='port-prev' class="port-btn noselect"><</div>
 				<div id='port-next' class="port-btn noselect">></div>
 			</div>
-		</div>
+		</div> <!--portfolio-->
 		<!-- ===============
 			FEATURES
 		=============== -->
@@ -150,7 +150,7 @@ get_header(); ?>
 			<?php endif;  ?>
 			<?php wp_reset_postdata(); ?>
 			</div>
-		</div>
+		</div> <!--features-->
 		<!-- ===============
 			QUOTE
 		=============== -->
@@ -205,11 +205,10 @@ get_header(); ?>
 					endwhile;
 				endif;?>
 				<? wp_reset_postdata(); ?>
-
 				<!-- first column -->
-		</div>
+		</div> <!--blog-post-->
 		<!-- ===============
-			COMPANY EXPERIENCE
+			COMPANY EXPERIENCE‘}’
 		=============== -->
 		<div class="experience">
 			<h2>Company experience</h2>
@@ -217,15 +216,16 @@ get_header(); ?>
 				<!-- first column -->
 				<div class="experience-column">
 					<div class="experience-content-graphics">
-						<img src="<?php echo($myImages); ?>/images/shape-cogs.png">
+						<div class="circle" id="circles-1"></div>
+						<div class="circleImg-1"></div>
+						<div class="experience-column-text">
+							<p>years of web development</p>
+						</div>
 					</div>
-					<div class="experience-column-text">
-						<h3 id='exp-first'>0</h3>
-						<p>years of web development</p>
-					</div>
+
 				</div>
 				<!-- first ellipse -->
-			<div class="eillipse-column">
+				<div class="ellipses-column">
 					<div class="experience-ellipses-wrapper">
 						<img src="<?php bloginfo('template_directory');?>/images/ellipse.svg">
 						<img src="<?php bloginfo('template_directory');?>/images/ellipse.svg">
@@ -235,15 +235,15 @@ get_header(); ?>
 				<!-- second column -->
 				<div class="experience-column">
 					<div class="experience-content-graphics">
-						<img src="<?php echo($myImages); ?>/images/shape-phone.png">
+						<div class="circle" id="circles-2"></div>
+						<div class="circleImg-2"></div>
 					</div>
 					<div class="experience-column-text">
-						<h3 id='exp-second'>0</h3>
 						<p>results of the last winter year</p>
 					</div>
 				</div>
 				<!-- second ellipse -->
-				<div class="eillipse-column">
+				<div class="ellipses-column">
 					<div class="experience-ellipses-wrapper">
 						<img src="<?php bloginfo('template_directory');?>/images/ellipse.svg">
 						<img src="<?php bloginfo('template_directory');?>/images/ellipse.svg">
@@ -253,15 +253,15 @@ get_header(); ?>
 				<!-- third column -->
 				<div class="experience-column">
 					<div class="experience-content-graphics">
-						<img src="<?php echo($myImages) ?>/images/shape-rocket.png">
+						<div class="circle" id="circles-3"></div>
+						<div class="circleImg-3"></div>
 					</div>
 					<div class="experience-column-text">
-						<h3 id='exp-third'>0</h3>
 						<p>euros of the military budget</p>
 					</div>
 				</div>
 			</div>
-		</div>
+		</div> <!--experience-->
 		<!-- ===============
 			OUR TEAM
 		=============== -->
@@ -274,7 +274,6 @@ get_header(); ?>
 						while( $team_query -> have_posts()) :
 							$team_query -> the_post(); ?>
 				<div class="our-team-column">
-					<!--<div class="team-member-info">-->
 						<div class='team-member-picture'>
 							<?php the_post_thumbnail(); ?>
 							<div class="member-name-slider">
@@ -290,7 +289,6 @@ get_header(); ?>
 						<div  id="btn" class="team-profile-btn torquoise-font">
 							<a href="<?php echo( get_the_permalink() ); ?>">PROFILE</a>
 						</div>
-					<!--</div>-->
 				</div>
 				<?php endwhile;
 					endif;?>
