@@ -214,15 +214,16 @@ get_header(); ?>
 			<h2>Company experience</h2>
 			<div class="experience-content">
 				<!-- first column -->
-				<div class="experience-column">
-					<div class="experience-content-graphics">
-						<div class="circle" id="circles-1"></div>
-						<div class="circleImg-1"></div>
+				<div class="experience-column" id="column-1">
+					<div class="column-content-1">
+						<div class="experience-content-graphics">
+							<div class="circle" id="circles-1"></div>
+							<div class="circleImg-1"></div>
+						</div>
 						<div class="experience-column-text">
 							<p>years of web development</p>
 						</div>
 					</div>
-
 				</div>
 				<!-- first ellipse -->
 				<div class="ellipses-column">
@@ -233,13 +234,15 @@ get_header(); ?>
 				</div>
 			</div>
 				<!-- second column -->
-				<div class="experience-column">
-					<div class="experience-content-graphics">
-						<div class="circle" id="circles-2"></div>
-						<div class="circleImg-2"></div>
-					</div>
-					<div class="experience-column-text">
-						<p>results of the last winter year</p>
+				<div class="experience-column" id="column-2">
+					<div class="column-content-2">
+						<div class="experience-content-graphics">
+							<div class="circle" id="circles-2"></div>
+							<div class="circleImg-2"></div>
+						</div>
+						<div class="experience-column-text">
+							<p>results of the last winter year</p>
+						</div>
 					</div>
 				</div>
 				<!-- second ellipse -->
@@ -251,13 +254,15 @@ get_header(); ?>
 					</div>
 				</div>
 				<!-- third column -->
-				<div class="experience-column">
-					<div class="experience-content-graphics">
-						<div class="circle" id="circles-3"></div>
-						<div class="circleImg-3"></div>
-					</div>
-					<div class="experience-column-text">
-						<p>euros of the military budget</p>
+				<div class="experience-column" id="column-3">
+					<div class="column-content-3">
+						<div class="experience-content-graphics">
+							<div class="circle" id="circles-3"></div>
+							<div class="circleImg-3"></div>
+						</div>
+						<div class="experience-column-text">
+							<p>euros of the military budget</p>
+						</div>
 					</div>
 				</div>
 			</div>
