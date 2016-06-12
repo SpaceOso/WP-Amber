@@ -208,7 +208,7 @@ get_header(); ?>
 				<!-- first column -->
 		</div> <!--blog-post-->
 		<!-- ===============
-			COMPANY EXPERIENCE‘}’
+			COMPANY EXPERIENCE
 		=============== -->
 		<div class="experience">
 			<h2>Company experience</h2>

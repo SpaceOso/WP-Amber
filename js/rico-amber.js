@@ -16,13 +16,13 @@
 	var responsiveSet = false;
 	var mobileCircleRadius = 110;
 	var maxWindowWidth = 675;
+	var mobile = false;
 	var hiddenOffset;
-	var circleDimensions;
 	var expSectionHeight;
 
 	//returns either percentage of screenwidth or mobile width
 	function getWidth() {
-		if(windowWidth > maxWindowWidth) {
+		if(windowWidth >= maxWindowWidth) {
 			return window.innerWidth / 15;
 		} else{
 			return mobileCircleRadius;
@@ -34,15 +34,18 @@
 			for (var i = 0; i < circles.length; i++) {
 				circles[i].updateRadius(getWidth());
 				//NEEDS TO GET LOOKED AT, DON'T THINK IT SHOULD LOOP
-				$('#column-' + i ).css({
+				$('#column-' + (i + 1) ).css({
 					'width': 'auto',
 					'height': '100%'
 				});
 				circleImg[i].css({
 					'width': getWidth().toString(),
 					'height': getWidth().toString(),
-					'top': ( parseInt(circleImg[i].css("width")) / 2).toString() + "px",
+
 				});
+				circleImg[i].css({
+					'top': ( parseInt(circleImg[i].css("width")) / 2).toString() + "px"
+				})
 			}
 			setWidth = false;
 			//check to see if we're thinner than mobile
@@ -56,7 +59,6 @@
 					'width': getWidth().toString(),
 					'height': getWidth().toString(),
 					'top': ( getWidth().toString() / 2).toString() + "px",
-					// 'left': ( mobileCircleRadius / 2).toString() + "px",
 				});
 			}
 		}
@@ -68,11 +70,23 @@
 		});
 
 		responsiveSet = true;
-	};
+	}
 
 	function SetWidthOfDots(){
+		/*find first svg and grab it's width and height
+		apply it to the the wrapper class so it's the same dimensions
+		as the circle image*/
+		var circleDimensions = $('#circles-1').find('svg');
+
+		$('.experience-ellipses-wrapper').css({
+			'width': circleDimensions.attr('width').toString(),
+			'height' : circleDimensions.attr('width').toString(),
+		});
+	}
+
+	function ResizeWidthOfDots(){
 		//want to *2 because getWidth() returns a radius
-		console.log(window.innerWidth);
+		// console.log(window.innerWidth);
 		if(window.innerWidth > 820) {
 			$('.experience-ellipses-wrapper').css({
 				'width': (getWidth() * 2).toString(),
@@ -81,7 +95,7 @@
 		}else {
 			$('.experience-ellipses-wrapper').css({
 				'height': (getWidth() * 2).toString(),
-				'width': 'auto'
+				'width': (getWidth() / 2).toString(),
 			});
 		}
 	}
@@ -93,7 +107,7 @@
 			var circleParent = ".column-content-" + i;
 			CreateCircles( circleParent );
 			// console.log($(parentContainer).offset().top);
-			var startHeight = $(parentContainer).offset().top;
+			var startHeight = $(circleParent).offset().top;
 			var columnWidth = $(circleParent).css('width');
 			var columnHeight = $(circleParent).css('height');
 			circleParents.push( {
@@ -103,7 +117,12 @@
 				columnHeight : columnHeight,
 				created : false
 			} );
+
+			console.log('start height of column ' + i + 'is ' + circleParents[i - 1].startHeight);
+			console.log('start exprience content is ' + $('.experience-content').offset().top);
 		}
+
+		// SetWidthOfCircleImages();
 
 		for (var i = 0; i <= 2; i++) {
 			//once visible set width and height
@@ -111,13 +130,18 @@
 				'width': circleParents[ i ].columnWidth,
 				'height': circleParents[ i ].columnHeight
 			});
+
+			circleParents[i].startHeight = $(circleParents[i].name).offset().top;
 			//once dimensions have been set hide element
 			var contentName = '.column-content-' + (i + 1);
 			$(contentName).hide();
 		}
 
+		SetWidthOfDots();
+		ResizeWidthOfDots();
 		circlesCreated = false;
 	}
+	// ==================================================
 
 	function CreateSliders(){
 		$('.header-scroll').slick({
@@ -182,44 +206,54 @@
 			slidesToScroll: 1
 		});
 	}
+	// ==================================================
 
-	$(document).ready(function(){
-		//grab the inner width when site loads
-		windowWidth = window.innerWidth;
-
-		//check for window resize
-		$window.resize( function(e) {
-			windowWidth = window.innerWidth;
-			//Check to see if we're wider than the mobile breakpoint
-			SetWidthOfCircleImages();
-			if(!responsiveSet){
-				SetResponsive();
-			}
-			SetWidthOfDots()
-		}); /*window.resize*/
-
-		CreateSliders();
-
+	function initVariables(){
 		//grab info for nav bar
 		navBarToggle = $('.navbar-toggle');
 		navMenu = $('#nav-menu');
 
 		//get the parent div of the experience section
 		expSection = $('.experience').offset().top;
+	}
+	// ==================================================
+
+	$(document).ready(function(){
+		//grab the inner width when site loads
+		windowWidth = window.innerWidth;
+		if(windowWidth <= maxWindowWidth ){
+			mobile = true;
+			console.log('mobile:' +  mobile);
+		}else
+		{
+			mobile = false;
+			console.log('mobile:' +  mobile);
+		}
+		//check for window resize
+		$window.resize( function(e) {
+			windowWidth = window.innerWidth;
+			//Check to see if we're wider than the mobile breakpoint
+			if(windowWidth <= maxWindowWidth ){
+				mobile = true;
+				console.log('mobile:' +  mobile);
+			}else
+			{
+				mobile = false;
+				console.log('mobile:' +  mobile);
+			}
+
+			SetWidthOfCircleImages();
+			if(!responsiveSet){
+				SetResponsive();
+			}
+			ResizeWidthOfDots()
+		}); /*window.resize*/
+
+		CreateSliders();
+
+		initVariables();
 
 		GetParentInfo();
-
-		//================================
-
-		//find first svg and grab it's width and height
-		//apply it to the the wrapper class so it's the same dimensions
-		//as the circle image
-		circleDimensions = $('#circles-1').find('svg');
-
-		$('.experience-ellipses-wrapper').css({
-			'width': circleDimensions.attr('width').toString(),
-			'height' : circleDimensions.attr('width').toString(),
-		});
 
 		//================================
 
@@ -227,10 +261,10 @@
 
 		$('.experience').css({'height': expSectionHeight});
 	});
+	// ==================================================
 
 	function CreateCircles( circleCount ) {
 
-		console.log("for some fucking reason I'm here");
 		// circlesCreated = true;
 		if (circleCount == '.column-content-1') {
 			console.log("creating column 01");
@@ -253,12 +287,10 @@
 				styleText: false
 			});
 			myCircle01.created = false;
-			// if(circles[0] == undefined) {
-			// 	circles.push(myCircle01);
+
 			circles[0] = myCircle01;
-				// circleImg.push($(".circleImg-1"));
+
 			circleImg[0] = $(".circleImg-1");
-			// }
 		}
 
 		if (circleCount == '.column-content-2') {
@@ -282,12 +314,11 @@
 				styleText: false
 			});
 			myCircle02.created = false;
-			// if(circles[1] == undefined) {
-			// 	circles.push(myCircle02);
+
 			circles[1] = myCircle02;
-				// circleImg.push($(".circleImg-2"));
+
 			circleImg[1] = $(".circleImg-2");
-			// }
+
 		}
 
 		if (circleCount == '.column-content-3') {
@@ -311,44 +342,37 @@
 				styleText: false
 			});
 			myCircle03.created = false;
-			// if (circles[2] == undefined) {
-			// 	circles.push(myCircle03);
+
 			circles[2] = myCircle03;
-				// circleImg.push($(".circleImg-3"));
+
 			circleImg[2] = $(".circleImg-3");
-			// }
+			//This is here because it's the last circle we create, once created
+			// we know that they are all created
 			circlesCreated = true;
 		}
 
 		//set the radius of the image
 
-		//FOR SOME REASON THIS IS RUNNING MORE THAN IT SHOULD
 		if (circles.length > 0) {
-			console.log(circles);
+			// console.log(circles);
 			for (var i = 0; i < circles.length; i++) {
 				//check to see if we already did this
 				if (circles[ i ].created == false) {
 					console.log('running this');
 					circles[i].updateRadius(getWidth());
 
+					//adjust the dimensions and position of the inner circle image
 					circleImg[i].css({
 						'width': getWidth().toString(),
-						'height': getWidth().toString()
-					});
-
-					circleImg[i].css({
+						'height': getWidth().toString(),
 						'top': ( parseInt(circleImg[i].css("width")) / 2).toString() + "px"
 					});
-
+					//mark true so we don't loop through this circle again
 					circles[ i ].created = true;
 				}
 			}
 		}
-
 	} /*CreateCircles*/
-
-	// ==================================================
-	// 		WINDOW SCROLL
 	// ==================================================
 
 	function fadeCircles(name){
@@ -361,34 +385,29 @@
 	//we need to check for scrolltop of company experience
 	$window.scroll(function(){
 		console.log('circlesCreated: ' + circlesCreated);
+		//if the circles have been made don't check any more
 		if( !circlesCreated ){
+			//only check once we're near the section
 			if ($window.scrollTop() >= expSection - 200) {
-				// if (circleParents.length > 0) {
-					for (var i = 0; i < circleParents.length; i++) {
-						console.log("window: " + $window.scrollTop());
-						console.log(circleParents[i].startHeight);
-						// if ($window.scrollTop() >= $(circleParents[i]).offset().top - 200) {
-						if ($window.scrollTop() >= circleParents[i].startHeight - 20) {
-							// console.log("going to create" + circleParents.length);
-							// console.log("creating");
-							// fuckMeHard();
-							if(circleParents[i].created == false) {
-								// CreateCircles(circleParents[i].name);
-								// $(circleParents[i].name).toggle('fade', { duration : 2000});
-								var timeout = [];
-
-								// $( circleParents[ i ].name ).css({
-								// 	'width' : circleParents[ i ].columnWidth,
-								// 	'height' : circleParents[ i ].columnHeight
-								// });
-
-								// window.setTimeout(fadeCircles, 1000 * i + 2, circleParents[i].name);
+				for (var i = 0; i < circleParents.length; i++) {
+					console.log("window: " + $window.scrollTop());
+					// console.log("to get there: " + ( $window.scrollTop() - circleParents[i].startHeight));
+					// console.log(circleParents[i].startHeight);
+					if ($window.scrollTop() >= circleParents[i].startHeight - 200) {
+						if(circleParents[i].created == false) {
+							circleParents[i].created = true;
+							//the time out stops count of window.scrollTop
+							//in mobile this means that you can scroll down and not trigger the next box
+							//skip timeout on mobile
+							if(!mobile) {
 								window.setTimeout(fadeCircles, 1000 * i + 2, i + 1);
-								circleParents[i].created = true;
+							}else
+							{
+								fadeCircles(i + 1);
 							}
 						}
 					}
-				// }
+				}
 			}
 		}
 	});

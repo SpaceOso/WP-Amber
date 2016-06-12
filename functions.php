@@ -192,7 +192,6 @@ function rico_amber_widgets_init() {
 
 	register_sidebar( $args );
 
-
 	$postsArgs = array(
 		'name'              => __( 'Current-Posts' ),
 		'id'                => 'current_posts',
@@ -204,6 +203,18 @@ function rico_amber_widgets_init() {
 	);
 
 	register_sidebar($postsArgs);
+
+	$twitterArgs = array(
+		'name'      => __( 'Follow-Us'),
+		'id'        => 'follow_us',
+		'class' => 'amber_twitter',
+		'before_widget'     => '<div class="twitter-widget">',
+		'after_widget'      => '</div>',
+		'before_title'      => '<h4>',
+		'after_title'       => '</h4>'
+	);
+
+	register_sidebar($twitterArgs);
 }
 add_action( 'widgets_init', 'rico_amber_widgets_init' );
 

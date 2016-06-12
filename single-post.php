@@ -15,20 +15,20 @@ get_header(); ?>
 			<?php while ( have_posts() ) : the_post(); ?>
 			<div class="blog-page-title">
 				<h1><?php echo( get_the_title() );?></h1>
-				<ul>
-					<li>
-						Author
+				<ul class="post-details">
+					<li id="post-author">
+						<p >by <?php echo( get_the_author() );?></p>
 					</li>
-					<li>
-						Date
+					<li id="post-date">
+						<p><?php echo( get_the_date() );?></p>
 					</li>
-					<li>
-						Comment count
+					<li id="post-comment-count">
+						<p><?php echo( comments_number('No Comments', '1 Comment', '% Comments') );?></p>
 					</li>
 				</ul>
 			</div>
-
 			<img class="blog-header-img" src="<?php echo( get_template_directory_uri() ); ?>/images/post-header.jpg"/>
+			<div class="header-overlay"></div>
 		</div>
 		<?php endwhile; // End of the loop.
 		?>

@@ -1904,12 +1904,12 @@ nav ul li:hover #nav-count-6{
 		text-align: center;
 	}
 	.features-content-column{
-		/* display:block; */
 		width: 370px; /* 370 / 842 */
 		margin: 0 3.108808290155%  0 3.108808290155%;
 		vertical-align: top;
 		text-align: center;
 	}
+
 	.features-column-row{
 		width: 100%;
 		margin: 0 auto 35px auto;
@@ -1917,15 +1917,13 @@ nav ul li:hover #nav-count-6{
 		text-align: center;
 	}
 
-	.features-column-row img{
+	.features-column-row svg{
 		float:none;
-		margin: 0 auto;
+		margin: 0 auto 20px  auto;
 		display:block;
 	}
 	.features-row-text{
-		/* margin-left: 80px; */
 		margin:0;
-		/* width:370px; */
 	}
 }
 
@@ -2277,6 +2275,7 @@ a:visited .blog-title{
 	text-align: center;
 	vertical-align: top;
 	height: 100%;
+	/*background-color: red;*/
 }
 
 .circleImg-1,
@@ -2344,33 +2343,12 @@ a:visited .blog-title{
 	position: relative;
 }
 
-
 .circle{
 	width: 100%;
 	/*height: 200px;*/
 	position: relative;
 }
 
-/*.circle::before{*/
-	/*content:"";*/
-/*}*/
-/*.circle::after{*/
-	/*background-image: url('images/shape-cogs.svg');*/
-	/*background-repeat: no-repeat;*/
-	/*background-position: center;*/
-	/*position: absolute;*/
-	/*content: "";*/
-	/*width: 100px;*/
-	/*height: 100px;*/
-	/*!*top: 62px;*!*/
-	/*!*left: 62px;*!*/
-	/*top: 50%;*/
-	/*left: 50%;*/
-	/*background-color: #000;*/
-	/*-webkit-border-radius:50%;*/
-	/*-moz-border-radius:50%;*/
-	/*border-radius:50%;*/
-/*}*/
 
 #circles-2::after{
 	background-image: url("images/shape-phone.svg");
@@ -2443,17 +2421,16 @@ a:visited .blog-title{
 
 }
 
-@media screen and (max-width: 820px){
+@media screen and (max-width: 878px){
 	.experience-ellipses-wrapper{
 		position: relative;
 	}
 
 	.experience-ellipses-wrapper img{
-		/*display: block;*/
-		position: relative;
-		top: 0;
-		margin: 100% 0;
-
+		position: absolute;
+		top: 50%;
+		height: 10px;
+		margin-top: -50%;
 	}
 
 }
@@ -2470,7 +2447,6 @@ a:visited .blog-title{
 	}
 	.ellipses-column {
 		display: none;
-
 	}
 
 	.experience-column{
@@ -2495,7 +2471,17 @@ a:visited .blog-title{
 	}
 }
 
-
+@media screen and (max-width: 420px){
+	.experience-column-text{
+		width: 80%;
+	}
+	.experience-count{
+		font-size: 4em;
+	}
+	.experience p{
+		font-size: 1.5em;
+	}
+}
 /* ---------------------------------------------------
 			OUR TEAM
 --------------------------------------------------- */
@@ -2621,11 +2607,6 @@ in case you change the h2 to something else */
 	background-color: #fff;
 }
 
-/*.team-profile-btn a:hover{*/
-	/*color: #fff;*/
-	/*background-color: #02baab;*/
-/*}*/
-
 /* ---------------------------------------------------
 			FOOTER
 --------------------------------------------------- */
@@ -2643,6 +2624,7 @@ footer{
 	justify-content: center;
 	/*width: 90%;*/
 	margin: auto;
+	padding: 0 10px;
 	/*background-color: red;*/
 }
 
@@ -2734,11 +2716,60 @@ footer{
 .social-footer-widget li{
 	display: block;
 }
+/*
+==========================================
+	TWITTER
+==========================================*/
+#twitter-widget-0 p{
+	color: #fff;
+}
+
+.twitter_intents .reply,
+.twitter_intents .retweet,
+.twitter_intents .favorite{
+	display: inline-block;
+	color: #02baab;
+	margin: 0 5% 0 0;
+}
+
+.twitter_intents{
+	width: 90%;
+	position: relative;
+	padding-left: 20px;
+}
+
+.twitter_intents:before{
+	content: url("images/icon-twitter-float.svg");
+	position: absolute;
+	top: 0;
+	left: 0;
+
+}
+
+.twitter_intents p{
+	font-size: 1.2em;
+	line-height: 1.5em;
+	margin-bottom: 5px;
+}
+
+
+.tweet-links{
+	margin-bottom: 5px;
+}
+
+.timestamp{
+	padding-left: 20px;
+	margin-bottom: 20px;
+}
+.twitter_intents p a,
+.timestamp a {
+	color: #85939f;
+}
 
 @media screen and (max-width: 919px){
-	.footer-column{
-		text-align: center;
-	}
+	/*#follow-us-column{*/
+		/*text-align: center;*/
+	/*}*/
 
 	.footer-address{
 		text-align: left;
@@ -2764,7 +2795,7 @@ footer{
 	}
 
 	.social-icons-list-label{
-		display: none;
+		/*display: none;*/
 	}
 
 	.social-icons-list-label img{
@@ -2782,24 +2813,48 @@ footer{
 	footer{
 		height: auto;
 	}
-
+	.social-icons-list-label{
+		display: none;
+	}
 	.footer-content{
 		display: block;
 		overflow: auto;
+		padding: 0;
 	}
 
 	.footer-column{
 		display: block;
 		width: 100%;
 		margin-bottom: 30px;
+		/*text-align: center;*/
+	}
+
+	#address-column,
+	#tweet-column,
+	#follow-us-column,
+	#post-column{
+		text-align: center;
 	}
 
 	.footer-address,
-	.tweet{
-		font-size: 1.8em;
+	.tweets{
+		font-size: 1.5em;
 		width: 80%;
-		text-align: center;
+		/*text-align: center;*/
 		margin: auto;
+	}
+
+	.timestamp {
+		text-align: center;
+	}
+
+	.timestamp a{
+		margin: auto;
+	}
+	.twitter_intents{
+		width: 100%;
+		margin: 0;
+		text-align: left;
 	}
 
 	.footer-address{
@@ -2866,16 +2921,18 @@ footer{
 }
 
 
-
 @media screen and (max-width: 390px){
 	.footer-address{
 		font-size: 1.4em;
 	}
 
-	.tweet{
-		text-align: left;
+	.tweets{
+		text-align: center;
 	}
 
+	.twitter_intents p{
+		font-size: 1.2em;
+	}
 	.footer-posts p{
 		font-size: 1.4em;
 	}
@@ -2922,8 +2979,9 @@ footer{
 	color: black;
 	width: 1680px;
 	height: 300px;
-	background-color: orange;
+	/*background-color: orange;*/
 	position: relative;
+	/*z-index: 3;*/
 }
 
 .blog-header-img{
@@ -2931,8 +2989,20 @@ footer{
 	bottom: 0;
 	left: 0;
 	display: inline-block;
+	z-index: 0;
 }
 
+.header-overlay{
+	position: absolute;
+	z-index: 1;
+	background-color: #000;
+	height: 100%;
+	width: 100%;
+	bottom: 0;
+	left: 0;
+	opacity: 0.6;
+	/*display: inline-block;*/
+}
 .blog-page-title{
 	/*height: 100%;*/
 
@@ -2942,4 +3012,18 @@ footer{
 	position: absolute;
 	bottom: 20%;
 	left: 15%;
+	z-index: 2;
 }
+
+.blog-page-title h1{
+	font-size: 3.6em;
+	color: #fff;
+	font-weight: lighter;
+}
+
+.post-details li{
+	color: #85939f;
+	font-size: 1.2em;
+	margin-right: 30px;
+}
+
