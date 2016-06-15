@@ -1762,7 +1762,7 @@ input[type="submit"]:hover,
 
 .img-name a{
 	color: #02baab;
-	font-size: 1em;
+	font-size: 1.4em;
 }
 
 .img-name a:hover{
@@ -1774,6 +1774,10 @@ input[type="submit"]:hover,
 	display: inline-block;
 	text-align: center;
 	color: #02baab;
+}
+
+.img-likes p{
+	font-size: 1.4em;
 }
 
 .portfolio-content{
@@ -2003,6 +2007,12 @@ input[type="submit"]:hover,
 	/* width: 100%; */
 	/* text-align: left; */
 	text-align: center;
+}
+
+#category-articles{
+	width: 90%;
+	background-color: red;
+	margin: auto;
 }
 
 .blog-posts a:visited{
@@ -3390,8 +3400,23 @@ label{
 /* ---------------------------------------------------
 			ARCHIVE
 --------------------------------------------------- */
+.archive-main-content{
+	width: 55%;
+	margin: auto;
+	padding-top: 40px;
+	/*background-color: red;*/
+}
+.archive .port-img-container{
+	/*color: black;*/
+	/*background-color: green;*/
+}
 
-.archive{
-	color: black;
-	background-color: green;
+.amber-archive,
+.amber-archive article{
+	display: inline-block;
+}
+
+.archive-row-portfolio{
+	margin: 20px;
+	text-align: center;
 }

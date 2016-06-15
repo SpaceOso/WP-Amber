@@ -16,34 +16,47 @@ get_header(); ?>
 		if ( have_posts() ) : ?>
 
 			<header class="page-header">
-				<?php
-					the_archive_title( '<h1 class="page-title">', '</h1>' );
-					the_archive_description( '<div class="taxonomy-description">', '</div>' );
-				?>
+				<div class='blog-page-header'>
+					<div class="blog-page-title">
+						<?php
+							the_archive_title( '<h1 class="page-title">', '</h1>' );
+							the_archive_description( '<div class="taxonomy-description">', '</div>' );
+						?>
+						</div>
+					<img class="blog-header-img" src="<?php echo( get_template_directory_uri() ); ?>/images/post-header.jpg"/>
+					<div class="header-overlay"></div>
+				</div> <!--blog-page-header-->
 			</header><!-- .page-header -->
 
-			<?php
-			/* Start the Loop */
-			while ( have_posts() ) : the_post();
+			<!--<div class="archive-main-content">-->
+				<?php
+				$categoryChosen = '';
+				/* Start the Loop */
+				//figure out what set of categories we're going to display
+				if(has_category('portfolio')){ ?>
+					<div class="archive-main-content">
+					<?php $categoryChosen = 'template-parts/category-portfolio';
+				}else if(has_category('articles') ){ ?>
+					<div class="arch-cat-articles">
+					<?php $categoryChosen = 'template-parts/category-articles';
+				};
 
-				/*
-				 * Include the Post-Format-specific template for the content.
-				 * If you want to override this in a child theme, then include a file
-				 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
-				 */
-				get_template_part( 'template-parts/content', get_post_format() );
+				while ( have_posts() ) : the_post();
 
-			endwhile;
+					get_template_part($categoryChosen);
 
-			the_posts_navigation();
+				endwhile;
+	
+				the_posts_navigation();
+	
+				else :
+	
+				get_template_part( 'template-parts/content', 'none' );
+	
+			endif; ?>
+		</div>
 
-		else :
-
-			get_template_part( 'template-parts/content', 'none' );
-
-		endif; ?>
-
-		</main><!-- #main -->
+		</div><!-- #main -->
 	</div><!-- #primary -->
 
 <?php
