@@ -12,15 +12,15 @@
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
-<title>rico-amber</title>
-<meta charset="<?php bloginfo( 'charset' ); ?>">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<link rel="profile" href="http://gmpg.org/xfn/11">
-<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
-<link href="https://fonts.googleapis.com/css?family=Oxygen:400,300,700" rel="stylesheet" type="text/css">
-<link href="<?php bloginfo('template_directory'); ?>/css/slick.css" rel="stylesheet" type="text/css" />
-<link href="<?php bloginfo('template_directory'); ?>/css/slick-theme.css" rel="stylesheet" type="text/css" />
-<?php wp_head(); ?>
+	<title>rico-amber</title>
+	<meta charset="<?php bloginfo( 'charset' ); ?>">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<link rel="profile" href="http://gmpg.org/xfn/11">
+	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
+	<link href="https://fonts.googleapis.com/css?family=Oxygen:400,300,700" rel="stylesheet" type="text/css">
+	<link href="<?php bloginfo('template_directory'); ?>/css/slick.css" rel="stylesheet" type="text/css" />
+	<link href="<?php bloginfo('template_directory'); ?>/css/slick-theme.css" rel="stylesheet" type="text/css" />
+	<?php wp_head(); ?>
 </head>
 
 <body <?php body_class(); ?>>

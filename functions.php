@@ -47,6 +47,7 @@ class Rico_Nav_List extends Walker_Nav_Menu
 }
 
 
+
 function sb_scroller_scripts() {
     wp_enqueue_script( 'jquery' );
 	wp_register_script( 'jqueryui', 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js');
@@ -142,8 +143,10 @@ function rico_amber_setup() {
 		'default-color' => 'ffffff',
 		'default-image' => '',
 	) ) );
+	//when uploading images WP will make these specific sizes
 	add_image_size('portfolio-scroller', 290, 290, true);
 	add_image_size('blog-posts', 290, 220, true);
+	add_image_size('blog-posts-content-header', 690, 520, true);
 }
 
 endif;
@@ -180,7 +183,7 @@ function rico_amber_widgets_init() {
 	) );
 
 	$args = array(
-		'name'          => __( ' Social-Icons' ),
+		'name'          => __( 'Social-Icons' ),
 		'id'            => 'social_icons',
 		// 'description'   => '',
 		'class'         => 'social-widget',
@@ -215,6 +218,19 @@ function rico_amber_widgets_init() {
 	);
 
 	register_sidebar($twitterArgs);
+
+	$tagArgs = array(
+		'name' => __('Tag-List'),
+		'id' => 'tag_list',
+		'class' => 'tag-list',
+		'before_widget' => '<div class="tag-widget">',
+		'after_widget' => '</div>',
+		'before_title' => '<p id="tag-title">',
+		'after_title' => '</p>',
+	);
+
+	register_sidebar( $tagArgs );
+
 }
 add_action( 'widgets_init', 'rico_amber_widgets_init' );
 
@@ -347,37 +363,55 @@ add_action('init', 'header_images_init');
  */
 
 
-function pw_show_gallery_image_urls(  ) {
-
-	global $post;
-
-	// Only do this on singular items
-	// if( ! is_singular() )
-	// 	return $content;
-	//
-	// // Make sure the post has a gallery in it
-	// if( ! has_shortcode( $post->post_content, 'gallery' ) )
-	// 	return $content;
-
-	// Retrieve the first gallery in the post
-	$gallery = get_post_gallery_images( $post );
-
-	$image_list = '<div class="header-scroll">';
-
-	// Loop through each image in each gallery
-	foreach( $gallery as $image_url ) {
-
-		$image_list .= '<div>' . '<img src="' . $image_url . '">' . '</div>';
-
+function mytheme_comment($comment, $args, $depth) {
+	if ( 'div' === $args['style'] ) {
+		$tag       = 'div';
+		$add_below = 'comment';
+	} else {
+		$tag       = 'li';
+		$add_below = 'div-comment';
 	}
+	?>
+	<<?php echo $tag ?> <?php comment_class( empty( $args['has_children'] ) ? '' : 'parent' ) ?> id="comment-<?php comment_ID() ?>">
+	<?php if ( 'div' != $args['style'] ) : ?>
+		<div id="div-comment-<?php comment_ID() ?>" class="comment-body">
+	<?php endif; ?>
+	<div class="comment-author vcard">
+		<?php if ( $args['avatar_size'] != 0 ) echo get_avatar( $comment, $args['avatar_size'] ); ?>
+		<?php printf( __( '<cite class="fn">%s</cite>' ), get_comment_author_link() ); ?>
+	</div>
+	<?php if ( $comment->comment_approved == '0' ) : ?>
+		<em class="comment-awaiting-moderation"><?php _e( 'Your comment is awaiting moderation.' ); ?></em>
+		<br />
+	<?php endif; ?>
 
-	$image_list .= '</div>';
+	<div class="comment-meta commentmetadata"><a href="<?php echo htmlspecialchars( get_comment_link( $comment->comment_ID ) ); ?>">
+			<?php
+			/* translators: 1: date, 2: time */
+			printf( __('%1$s at %2$s'), get_comment_date(),  get_comment_time() ); ?></a><?php edit_comment_link( __( '(Edit)' ), '  ', '' );
+		?>
+	</div>
 
-	// Append our image list to the content of our post
-	
+	<?php comment_text(); ?>
 
-	return $image_list;
+	<div class="reply">
+		<?php comment_reply_link( array_merge( $args, array( 'add_below' => $add_below, 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?>
+	</div>
+	<?php if ( 'div' != $args['style'] ) : ?>
+		</div>
+	<?php endif; ?>
 
+
+	<?php
 }
-add_filter( 'the_content', 'pw_show_gallery_image_urls' );
+
+function wpb_move_comment_field_to_bottom( $fields ) {
+	$comment_field = $fields['comment'];
+	unset( $fields['comment'] );
+	$fields['comment'] = $comment_field;
+	return $fields;
+}
+
+add_filter( 'comment_form_fields', 'wpb_move_comment_field_to_bottom' );
+
 

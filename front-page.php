@@ -40,8 +40,9 @@ get_header(); ?>
 							</div>
 
 							<?php endwhile;
+							wp_reset_postdata();
 							endif;
-							wp_reset_postdata();?>
+							?>
 						</div>
 				<!-- SPLASH -->
 
@@ -104,8 +105,9 @@ get_header(); ?>
 							</div>
 						</div>
 					<?php	endwhile;
+					wp_reset_postdata();
 					endif;?>
-					<? wp_reset_postdata(); ?>
+
 				</div>
 			</div> <!-- port-viewer -->
 			<div class="port-btn-container">
@@ -146,9 +148,9 @@ get_header(); ?>
 								<?php $currentCount++; ?>
 							</div>
 						 <?php endwhile; ?>
-				<?php endwhile; ?>
-			<?php endif;  ?>
-			<?php wp_reset_postdata(); ?>
+				<?php endwhile;
+					wp_reset_postdata();
+				endif;  ?>
 			</div>
 		</div> <!--features-->
 		<!-- ===============
@@ -165,8 +167,8 @@ get_header(); ?>
 								<p class="torquoise-font"><?php echo(get_post_meta( $post->ID, "source", true )); ?></p>
 							</div>
 						<?php endwhile;
+						wp_reset_postdata();
 					endif;?>
-				<?php wp_reset_postdata(); ?>
 			</div>
 		</div>
 		<!-- ===============
@@ -196,15 +198,15 @@ get_header(); ?>
 						<div class="blog-posts-details">
 							<a class="torquoise-font blog-learnMore" href="<?php the_permalink(); ?>">Learn more</a>
 							<div class="gray-font blog-commentCount icon-bubbles2">
-								<a href="<?php the_permalink(); ?>">450</a>
+								<a href="<?php the_permalink(); ?>"><?php echo ($post->comment_count );?></a>
 							</div>
 						</div>
 					</div>
 				</div>
 				<?php
 					endwhile;
+						wp_reset_postdata();
 				endif;?>
-				<? wp_reset_postdata(); ?>
 				<!-- first column -->
 		</div> <!--blog-post-->
 		<!-- ===============
@@ -296,13 +298,12 @@ get_header(); ?>
 						</div>
 				</div>
 				<?php endwhile;
+						wp_reset_postdata();
 					endif;?>
-				<? wp_reset_postdata(); ?>
 			</div>
 		</div>
 		</main><!-- #main -->
 	</div><!-- #primary -->
 
 <?php
-// 
 get_footer();
