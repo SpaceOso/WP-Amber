@@ -28,17 +28,17 @@ get_header(); ?>
 				</div> <!--blog-page-header-->
 			</header><!-- .page-header -->
 
-			<!--<div class="archive-main-content">-->
+
 				<?php
 				$categoryChosen = '';
 				/* Start the Loop */
 				//figure out what set of categories we're going to display
 				if(has_category('portfolio')){ ?>
 					<div class="archive-main-content">
-					<?php $categoryChosen = 'template-parts/category-portfolio';
+					<?php $categoryChosen = 'template-parts/content-portfolio';
 				}else if(has_category('articles') ){ ?>
-					<div class="arch-cat-articles">
-					<?php $categoryChosen = 'template-parts/category-articles';
+					<div id="cat-articles-parent" class="archive-main-content">
+					<?php $categoryChosen = 'template-parts/content-articles';
 				};
 
 				while ( have_posts() ) : the_post();
