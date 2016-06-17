@@ -3036,7 +3036,8 @@ footer{
 	/*left: 0;*/
 	display: inline-block;
 	z-index: 0;
-	width: 100%;
+	max-width: none;
+	/*width: 100%;*/
 }
 
 .header-overlay{
@@ -3352,7 +3353,7 @@ label{
 	border-bottom: 1px solid #eaebec;
 }
 
-.comment:before{
+.decent-comments .comment:before{
 	position: absolute;
 	content: '';
 	background-image: url('images/quotes-left.svg');

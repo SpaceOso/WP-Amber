@@ -18,7 +18,7 @@ get_header(); ?>
 			<header class="page-header">
 				<div class='blog-page-header'>
 					<div class="blog-page-title">
-						<h1 class="page-title">Portfolio</h1>
+						<h1 class="page-title">Check out our latest works!</h1>
 						<?php
 						the_archive_description( '<div class="taxonomy-description">', '</div>' );
 						?>

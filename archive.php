@@ -39,7 +39,9 @@ get_header(); ?>
 				}else if(has_category('articles') ){ ?>
 					<div id="cat-articles-parent" class="archive-main-content">
 					<?php $categoryChosen = 'template-parts/content-articles';
-				};
+				}else{
+						$categoryChosen = 'template-parts/content';
+					};
 
 				while ( have_posts() ) : the_post();
 
@@ -51,8 +53,9 @@ get_header(); ?>
 	
 				else :
 	
-				get_template_part( 'template-parts/content', 'none' );
-	
+				// get_template_part( 'template-parts/content', 'none' );
+				get_template_part( 'template-parts/content', 'content' );
+
 			endif; ?>
 		</div>
 

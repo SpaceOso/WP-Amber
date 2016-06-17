@@ -18,10 +18,8 @@ get_header(); ?>
 			<header class="page-header">
 				<div class='blog-page-header'>
 					<div class="blog-page-title">
-						<h1 class="page-title">Check out our latest Articles!</h1>
+						<h1 class="page-title">Check out our team</h1>
 						<?php
-						// the_archive_title( '<h1 class="page-title">', '</h1>' );
-						// the_archive_title( '<h1 class="page-title">fuckfuck', '</h1>' );
 						the_archive_description( '<div class="taxonomy-description">', '</div>' );
 						?>
 					</div>
@@ -31,17 +29,12 @@ get_header(); ?>
 			</header><!-- .page-header -->
 
 
-			<?php
-			$categoryChosen = '';
-			/* Start the Loop */
-			//figure out what set of categories we're going to display
-			if(has_category('portfolio')){ ?>
+
+
 			<div class="archive-main-content">
-				<?php $categoryChosen = 'template-parts/content-portfolio';
-				}else if(has_category('articles') ){ ?>
-				<div id="cat-articles-parent" class="archive-main-content">
-					<?php $categoryChosen = 'template-parts/content-articles';
-					};
+				<p class="archive-description">Bacon ipsum dolor amet flank filet mignon turkey sirloin alcatra bresaola drumstick pastrami shank capicola ball tip shoulder tenderloin landjaeger. Alcatra ball tip capicola porchetta meatloaf corned beef salami jowl tongue spare ribs leberkas pork loin. Drumstick jerky t-bone ground round, pastrami ham hock frankfurter biltong prosciutto filet mignon spare ribs cow sirloin salami rump.</p>
+
+					<?php $categoryChosen = 'template-parts/content-team-members';
 
 					while ( have_posts() ) : the_post();
 

@@ -7,6 +7,27 @@
  */
 
 ( function( $ ) {
+	/*======================================
+	 Company Info
+	 ======================================*/
+	//email info
+	wp.customize('email_setting', function( value ) {
+		value.bind( function( to ) {
+			$( '#footer-email' ).text( to );
+		} );
+	});
+	//phone number
+	wp.customize('phone_setting', function( value ) {
+		value.bind( function( to ) {
+			$( '#footer-phone' ).text( to );
+		} );
+	});
+	// Site address and description.
+	wp.customize( 'address_setting', function( value ) {
+		value.bind( function( to ) {
+			$( '#footer-address' ).text( to );
+		} );
+	} );
 
 	// Site title and description.
 	wp.customize( 'blogname', function( value ) {

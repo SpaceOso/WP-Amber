@@ -24,16 +24,16 @@
 					<li>
 						<img class="footer-icon-flag" src="<?php echo(get_template_directory_uri());?>/images/icon-flag.svg">
 						<div class="footer-address-text">
-							Address: <span class="footer-gray">602 Heritage way, Wilton, NY.</span>
+							Address: <span id="footer-address" class="footer-gray"><?php echo get_theme_mod('address_setting', 'Use cuztomizer to enter your address');?></span>
 						</div>
 					</li>
 					<li>
 						<img src="<?php echo($myImages); ?>/images/icon-phone.svg">
-						Phone: <span class="footer-gray">951-796-6545</span>
+						Phone: <span id="footer-phone" class="footer-gray"><?php echo get_theme_mod('phone_setting', '555-555-555'); ?></span>
 					</li>
 					<li>
 						<img src="<?php echo($myImages); ?>/images/icon-email.svg">
-						Email: <span class="footer-gray">miguelricodev@gmail.com</span>
+						Email: <span id='footer-email' class="footer-gray"><?php echo get_theme_mod('email_setting', 'email@mail.com') ?></span>
 					</li>
 				</ul>
 				<div class="map">
