@@ -49,24 +49,36 @@ class Rico_Nav_List extends Walker_Nav_Menu
 
 
 function sb_scroller_scripts() {
-    wp_enqueue_script( 'jquery' );
-	wp_register_script( 'jqueryui', 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js');
-    wp_enqueue_script( 'jqueryui' );
-    wp_enqueue_script('jquery-effects-drop');
-    wp_enqueue_script('jquery-effects-slide');
-    wp_enqueue_script('jquery-effects-fade');
-    wp_register_script('rico-amber-script', get_template_directory_uri().'/js/rico-amber.js',array('jquery', 'jqueryui'), true);
-    wp_enqueue_script('rico-amber-script');
-    wp_enqueue_script('countUp', get_template_directory_uri().'/js/countUp.js', false);
-    wp_register_script('countUp');
-    wp_enqueue_script('countUpJquery,', get_template_directory_uri().'/js/countUp-jquery.js', false);
-    wp_register_script('countUpJquery');
-    wp_register_script('slick', get_template_directory_uri().'/js/slick.min.js', true);
-    wp_enqueue_script('slick');
-	wp_register_script('circles', get_template_directory_uri().'/js/circles.js', true);
-    wp_enqueue_script('circles');
+	if(! is_admin()) {
+		wp_enqueue_script( 'jquery' );
+		wp_register_script( 'jqueryui', 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js' );
+		wp_enqueue_script( 'jqueryui' );
+		wp_enqueue_script( 'jquery-effects-drop' );
+		wp_enqueue_script( 'jquery-effects-slide' );
+		wp_enqueue_script( 'jquery-effects-fade' );
+		if(is_front_page()) {
+			wp_register_script( 'rico-amber-script', get_template_directory_uri() . '/js/rico-amber.js', array(
+				'jquery',
+				'jqueryui'
+			), true );
+			wp_enqueue_script( 'rico-amber-script' );
 
+			wp_register_script( 'circles', get_template_directory_uri() . '/js/circles.js', true );
+			wp_enqueue_script( 'circles' );
+		};
 
+		if(is_single()) {
+			wp_enqueue_script( 'sidebar-slider', get_template_directory_uri() . '/js/sidebar-sliders.js', false );
+			wp_register_script( 'sidebar-slider' );
+		};
+		wp_enqueue_script( 'countUp', get_template_directory_uri() . '/js/countUp.js', false );
+		wp_register_script( 'countUp' );
+		wp_enqueue_script( 'countUpJquery,', get_template_directory_uri() . '/js/countUp-jquery.js', false );
+		wp_register_script( 'countUpJquery' );
+		wp_register_script( 'slick', get_template_directory_uri() . '/js/slick.min.js', true );
+		wp_enqueue_script( 'slick' );
+
+	}
 }
 
 add_action('wp_enqueue_scripts', 'sb_scroller_scripts');

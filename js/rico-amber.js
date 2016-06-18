@@ -6,7 +6,6 @@
 	var $window = $(window);
 	var windowWidth;
 	var expSection = 500;
-	var expAnim = false;
 	var myCircle01, myCircle02, myCircle03;
 	var circles = [];
 	var circleImg = [];
@@ -17,7 +16,6 @@
 	var mobileCircleRadius = 110;
 	var maxWindowWidth = 675;
 	var mobile = false;
-	var hiddenOffset;
 	var expSectionHeight;
 
 	//returns either percentage of screenwidth or mobile width
@@ -402,8 +400,6 @@
 			if ($window.scrollTop() >= expSection - 200) {
 				for (var i = 0; i < circleParents.length; i++) {
 					console.log("window: " + $window.scrollTop());
-					// console.log("to get there: " + ( $window.scrollTop() - circleParents[i].startHeight));
-					// console.log(circleParents[i].startHeight);
 					if ($window.scrollTop() >= circleParents[i].startHeight - 200) {
 						if(circleParents[i].created == false) {
 							circleParents[i].created = true;
