@@ -85,6 +85,22 @@ function rico_amber_customize_register( $wp_customize ) {
 	)));
 
 	$wp_customize->get_setting( 'email_setting')->transport = 'postMessage';
+
+	/*======================================
+		logo image
+	======================================*/
+
+	$wp_customize->add_setting( 'logo_image');
+
+	$wp_customize->add_control( new WP_Customize_Image_Control($wp_customize, 'logo_image', array(
+		'label' => __( 'Upload Logo', 'rico-amber' ),
+		'section'  => 'address_section',
+		'settings' => 'logo_image',
+		'sanitize_callback' => '',
+		'sanitize_js_callback' => '',
+	)));
+
+	$wp_customize->get_setting( 'logo_image')->transport = 'postMessage';
 }
 add_action( 'customize_register', 'rico_amber_customize_register' );
 

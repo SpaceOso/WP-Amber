@@ -25,7 +25,7 @@ get_header(); ?>
 						the_archive_description( '<div class="taxonomy-description">', '</div>' );
 						?>
 					</div>
-					<img class="blog-header-img" src="<?php echo( get_template_directory_uri() ); ?>/images/post-header.jpg"/>
+					<!--<img class="blog-header-img" src="--><?php //echo( get_template_directory_uri() ); ?><!--/images/post-header.jpg"/>-->
 					<div class="header-overlay"></div>
 				</div> <!--blog-page-header-->
 			</header><!-- .page-header -->
