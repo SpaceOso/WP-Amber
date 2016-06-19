@@ -1187,12 +1187,10 @@ nav ul li a{
 
 @media screen and (max-width: 745px){
 	nav{
-		/*position: relative;*/
 		height: auto;
 	}
 
 	.nav-content{
-		/*height: auto;*/
 		text-align: center;
 	}
 
@@ -1201,13 +1199,10 @@ nav ul li a{
 	button:hover,
 	button:focus,
 	button:active{
-		/*position: absolute;*/
-		/*top: 50%;*/
 		height: 100%;
 		left: 0;
 		display: inline-block;
 		float: left;
-		/*margin-left: 10%;*/
 		margin: auto 0 auto 10%;
 		box-shadow: none;
 	}
@@ -1216,18 +1211,14 @@ nav ul li a{
 	.logo{
 		display: inline-block;
 		position: static;
-		/*margin:auto;*/
 		margin: auto;
 	}
 	nav ul{
-
 		position: absolute;
-		/*background-color: rgba(0,0,0, 0.5);*/
 		top:  60px;
 		left: 0;
 		height: 350px;
 		width: 100%;
-		/*padding: 1px solid transparent;*/
 		display: none;
 	}
 

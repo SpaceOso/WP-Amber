@@ -251,6 +251,16 @@
 				console.log('mobile:' +  mobile);
 			}
 
+			if(windowWidth > 745 ){
+				navMenu.css({
+					'display' : 'inline-block'
+				});
+			}else{
+				navMenu.css({
+					'display' : 'none'
+				});
+			}
+
 			SetWidthOfCircleImages();
 			if(!responsiveSet){
 				SetResponsive();

@@ -34,7 +34,6 @@ get_header(); ?>
 				</div> <!--post-details-->
 			</div>
 			<!--page title-->
-			<!--<img class="blog-header-img" src="--><?php //echo( get_template_directory_uri() ); ?><!--/images/post-header.jpg"/>-->
 			<div class="header-overlay"></div>
 		</div> <!--blog-page-header-->
 		<!--HEADER/END-->
