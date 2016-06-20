@@ -51,8 +51,9 @@ get_header(); ?>
 			INFO 01
 		=============== -->
 		<div class="info">
-			<h2><?php echo( get_field('section_title', 177) ); ?></h2>
-			<p><?php echo( get_field( 'home_page_info', 177 )); ?></p>
+			<!--<h2>--><?php //echo( get_field('section_title', 177) ); ?><!--</h2>-->
+			<h2 id="info-header"> <?php echo get_theme_mod('info_header', 'info text'); ?> </h2>
+			<p id="info-paragraph"><?php echo get_theme_mod('info_paragraph', 'use customize option to fill this in') ?></p>
 			<div id="btn" class="info-button">
 				<a href="#">PURCHASE NOW</a>
 			</div>
@@ -60,10 +61,14 @@ get_header(); ?>
 		<!-- ===============
 			PORTFOLIO
 		=============== -->
-		<div class="portfolio">
-			<h2><?php echo( get_field( 'section_title', 181 ) ); ?></h2>
+		<!--check to see if the user has uploaded an image or not-->
+		<?php if( get_theme_mod('portfolio_bg')  != '') {
+			$portfolioBg = get_theme_mod( 'portfolio_bg' );
+		};?>
+		<div class="portfolio" style="background-image:url('<?php echo $portfolioBg;?>')">
+			<h2 id="portfolio-header"><?php echo get_theme_mod('portfolio_header', 'Portfolio section'); ?></h2>
 		<div class="portfolio-description">
-				<p><?php echo( get_field( 'home_page_info', 181  )); ?></p>
+			<p id="portfolio-desc"><?php echo get_theme_mod('portfolio_desc', 'use customize option to fill text in here.'); ?></p>
 		</div>
 			<div id='post-viewer' class="portfolio-content">
 				<div class="port-row">
@@ -119,7 +124,7 @@ get_header(); ?>
 			FEATURES
 		=============== -->
 		<div class="features">
-			<h2><?php echo( get_field( 'section_title', 183 )); ?></h2>
+			<h2 id="features-header"><?php echo get_theme_mod('features_header', 'Superb Features');?></h2>
 			<div class="features-content">
 			<!-- first column -->
 			<?php $args = array(

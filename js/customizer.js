@@ -10,6 +10,66 @@
 	/*======================================
 	 Company Info
 	 ======================================*/
+	//info header
+	wp.customize('info_header', function( value ) {
+		value.bind( function( to ) {
+			$( '.info h2' ).text( to );
+		} );
+	});
+	//info paragraph
+	wp.customize('info_paragraph', function( value ) {
+		value.bind( function( to ) {
+			$( '#info-paragraph' ).text( to );
+		} );
+	});
+	/*======================================
+	 portfolio
+	 ======================================*/
+	wp.customize('portfolio_header', function( value ) {
+		value.bind( function( to ) {
+			$( '#portfolio-header' ).text( to );
+		} );
+	});
+	//info paragraph
+	wp.customize('portfolio_desc', function( value ) {
+		value.bind( function( to ) {
+			$( '#portfolio-desc' ).text( to );
+		} );
+	});
+
+	//portfolio-bg
+	wp.customize('portfolio_bg', function( value ) {
+		value.bind( function( to ) {
+			to = "url(" + to + ")";
+			$( '.portfolio' ).css({
+				'background-image' : to
+			});
+		} );
+	});
+	/*======================================
+	 	features
+	 ======================================*/
+	//features header
+	wp.customize('features_header', function( value ) {
+		value.bind( function( to ) {
+			$( '#features-header' ).text( to );
+		} );
+	});
+	/*======================================
+		 quotes
+	 ======================================*/
+	//portfolio-bg
+	wp.customize('quote_bg_setting', function( value ) {
+		value.bind( function( to ) {
+			to = "url(" + to + ")";
+			$( '.quote' ).css({
+				'background-image' : to
+			});
+		} );
+	});
+	/*======================================
+	 	footer
+	 ======================================*/
 	//email info
 	wp.customize('email_setting', function( value ) {
 		value.bind( function( to ) {
