@@ -32,6 +32,19 @@ function rico_amber_customize_register( $wp_customize ) {
 		'description' => __('Several settings')
 	));
 
+	$wp_customize->add_panel('articles_cat', array(
+		'priority' => 10,
+		'capability' => 'edit_theme_options',
+		'title' => __('Articles Category Options', 'rico-amber'),
+		'description' => __('Several settings')
+	));
+
+	$wp_customize->add_panel('team_cat', array(
+		'priority' => 10,
+		'capability' => 'edit_theme_options',
+		'title' => __('Team Members Category Options', 'rico-amber'),
+		'description' => __('Several settings')
+	));
 
 
 	$wp_customize->add_section( 'company_info', array(
@@ -301,29 +314,196 @@ function rico_amber_customize_register( $wp_customize ) {
 		======================================*/
 	//portfolio section
 	$wp_customize->add_section( 'portfolio_cat_section', array(
-		'title' => "Company Info in Footer",
+		'title' => "Portfolio Header Options",
 		'priority' => 0,
 		'panel' => 'portfolio_cat'
 	));
 
 	//add default image to portfolio section
-	$defaultQuoteBGImage = get_bloginfo('template_url') . '/images/quote-bg.jpg';
+	$portfolioCatHeader = get_bloginfo('template_url') . '/images/post-header.jpg';
 	//portfolio background
 	$wp_customize->add_setting( 'portfolio_cat_header', array(
-		'default'  => $defaultQuoteBGImage,
+		'default'  => $portfolioCatHeader,
 		'transport' => 'postMessage',
 		'capability' => 'edit_theme_options',
 		'type' => 'theme_mod',
 	));
 
-	//portfolio header control
-	$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'quote_bg_control', array(
-		'label'    => __( 'Chose background image for quote section', 'rico-amber' ),
-		'section'  => 'quotes_section',
-		'settings' => 'quote_bg_setting',
+	//portfolio header image control
+	$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'portfolio_cat_header_control', array(
+		'label'    => __( 'Chose header image for portfolio section', 'rico-amber' ),
+		'section'  => 'portfolio_cat_section',
+		'settings' => 'portfolio_cat_header',
 		'sanitize_callback' => '',
 		'sanitize_js_callback' => '',
 	)));
+	
+	//====================
+		//header title
+	$wp_customize->add_setting( 'portfolio_cat_title', array(
+		'default'  => 'Check out our latest works!',
+		'transport' => 'postMessage',
+		'capability' => 'edit_theme_options',
+		'type' => 'theme_mod',
+	));
+	
+	//portfolio cat header text control
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'portfolio_cat_title_control', array(
+		'label'    => __( 'Enter header text for portfolio category section', 'rico-amber' ),
+		'section'  => 'portfolio_cat_section',
+		'settings' => 'portfolio_cat_title',
+		'sanitize_callback' => '',
+		'sanitize_js_callback' => '',
+	)));
+
+	//====================
+	//portfolio description
+	$wp_customize->add_setting( 'port_cat_desc', array(
+		'default'  => 'Use the customize option to fill this area',
+		'transport' => 'postMessage',
+		'capability' => 'edit_theme_options',
+		'type' => 'theme_mod',
+	));
+
+	//portfolio cat description
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'port_cat_desc_text', array(
+		'label'    => __( 'Enter text for portfolio category section', 'rico-amber' ),
+		'section'  => 'portfolio_cat_section',
+		'settings' => 'port_cat_desc',
+		'sanitize_callback' => '',
+		'sanitize_js_callback' => '',
+		'type' => 'textarea',
+	)));
+
+	$wp_customize->get_section('portfolio_cat_title')->transport = 'postMessage';
+	/*======================================
+			articles-cat section
+		======================================*/
+	//article section
+	$wp_customize->add_section( 'articles_cat_section', array(
+		'title' => "Articles Header Options",
+		'priority' => 0,
+		'panel' => 'articles_cat'
+	));
+	
+	//add default image to portfolio section
+	//article background
+	$wp_customize->add_setting( 'articles_cat_header', array(
+		'default'  => $portfolioCatHeader,
+		'transport' => 'postMessage',
+		'capability' => 'edit_theme_options',
+		'type' => 'theme_mod',
+	));
+	
+	//article header image control
+	$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'articles_cat_header_control', array(
+		'label'    => __( 'Chose header image for portfolio section', 'rico-amber' ),
+		'section'  => 'articles_cat_section',
+		'settings' => 'articles_cat_header',
+		'sanitize_callback' => '',
+		'sanitize_js_callback' => '',
+	)));
+	
+	//====================
+	//header title
+	$wp_customize->add_setting( 'articles_cat_title', array(
+		'default'  => 'Check out our latest Articles!',
+		'transport' => 'postMessage',
+		'capability' => 'edit_theme_options',
+		'type' => 'theme_mod',
+	));
+	
+	//article cat header text control
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'articles_cat_title_control', array(
+		'label'    => __( 'Enter header text for articles category section', 'rico-amber' ),
+		'section'  => 'articles_cat_section',
+		'settings' => 'articles_cat_title',
+		'sanitize_callback' => '',
+		'sanitize_js_callback' => '',
+	)));
+
+	//=========================
+	//article cat paragraph
+	$wp_customize->add_setting( 'articles_cat_desc', array(
+		'default'  => 'Use the customize option to fill this area',
+		'transport' => 'postMessage',
+		'capability' => 'edit_theme_options',
+		'type' => 'theme_mod',
+	));
+
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'articles_cat_desc_text', array(
+		'label'    => __( 'Enter text for article category section', 'rico-amber' ),
+		'section'  => 'articles_cat_section',
+		'settings' => 'articles_cat_desc',
+		'sanitize_callback' => '',
+		'sanitize_js_callback' => '',
+		'type' => 'textarea',
+	)));
+	$wp_customize->get_section('articles_cat_title')->transport = 'postMessage';
+
+	/*======================================
+			team-cat section
+		======================================*/
+	//team member section
+	$wp_customize->add_section( 'team_cat_section', array(
+		'title' => "Articles Header Options",
+		'priority' => 0,
+		'panel' => 'team_cat'
+	));
+
+	//team memeber header background
+	$wp_customize->add_setting( 'team_cat_header', array(
+		'default'  => $portfolioCatHeader,
+		'transport' => 'postMessage',
+		'capability' => 'edit_theme_options',
+		'type' => 'theme_mod',
+	));
+
+	//team memeber header image control
+	$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'team_cat_header_control', array(
+		'label'    => __( 'Chose header image for team member section', 'rico-amber' ),
+		'section'  => 'team_cat_section',
+		'settings' => 'team_cat_header',
+		'sanitize_callback' => '',
+		'sanitize_js_callback' => '',
+	)));
+
+	//====================
+	//header title
+	$wp_customize->add_setting( 'team_cat_title', array(
+		'default'  => 'Check out our team members!',
+		'transport' => 'postMessage',
+		'capability' => 'edit_theme_options',
+		'type' => 'theme_mod',
+	));
+
+	//team members cat header text control
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'team_cat_title_control', array(
+		'label'    => __( 'Enter header text for team memeber category section', 'rico-amber' ),
+		'section'  => 'team_cat_section',
+		'settings' => 'team_cat_title',
+		'sanitize_callback' => '',
+		'sanitize_js_callback' => '',
+	)));
+
+	//=========================
+	//team members cat paragraph
+	$wp_customize->add_setting( 'team_cat_desc', array(
+		'default'  => 'Use the customize option to fill this area',
+		'transport' => 'postMessage',
+		'capability' => 'edit_theme_options',
+		'type' => 'theme_mod',
+	));
+
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'team_cat_desc_text', array(
+		'label'    => __( 'Enter text for team member category section', 'rico-amber' ),
+		'section'  => 'team_cat_section',
+		'settings' => 'team_cat_desc',
+		'sanitize_callback' => '',
+		'sanitize_js_callback' => '',
+		'type' => 'textarea',
+	)));
+	$wp_customize->get_section('team_cat_title')->transport = 'postMessage';
 }
 
 add_action( 'customize_register', 'rico_amber_customize_register' );

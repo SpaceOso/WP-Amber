@@ -16,9 +16,12 @@ get_header(); ?>
 			if ( have_posts() ) : ?>
 
 			<header class="page-header">
-				<div class='blog-page-header'>
+				<?php
+					$teamCatHeader = get_theme_mod('team_cat_header', get_bloginfo('template_url') . '/images/post-header.jpg');
+				?>
+				<div id='cat-team' class='blog-page-header' style="background-image: url('<?php echo $teamCatHeader; ?>')">
 					<div class="blog-page-title">
-						<h1 class="page-title">Check out our team</h1>
+						<h1 id='cat-team-title' class="page-title"><?php echo get_theme_mod('team_cat_title');?></h1>
 						<?php
 						the_archive_description( '<div class="taxonomy-description">', '</div>' );
 						?>
@@ -31,7 +34,7 @@ get_header(); ?>
 
 
 			<div class="archive-main-content">
-				<p class="archive-description">Bacon ipsum dolor amet flank filet mignon turkey sirloin alcatra bresaola drumstick pastrami shank capicola ball tip shoulder tenderloin landjaeger. Alcatra ball tip capicola porchetta meatloaf corned beef salami jowl tongue spare ribs leberkas pork loin. Drumstick jerky t-bone ground round, pastrami ham hock frankfurter biltong prosciutto filet mignon spare ribs cow sirloin salami rump.</p>
+				<p id="team-cat-desc" class="archive-description"><?php echo get_theme_mod('port_cat_desc', 'Use customizer to fill this area in');?></p>
 
 					<?php $categoryChosen = 'template-parts/content-team-members';
 

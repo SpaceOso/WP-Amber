@@ -16,9 +16,13 @@ get_header(); ?>
 			if ( have_posts() ) : ?>
 
 			<header class="page-header">
-				<div class='blog-page-header'>
+				<?php
+					// check to see if he user uploaded an image if not use defaults
+					$articlesCatHeaderImg = get_theme_mod('articles_cat_header', get_bloginfo('template_url') . '/images/post-header.jpg');
+				?>
+				<div id='cat-articles' class='blog-page-header' style="background-image: url('<?php echo $articlesCatHeaderImg; ?>')">
 					<div class="blog-page-title">
-						<h1 class="page-title">Check out our latest Articles!</h1>
+						<h1 id='cat-articles-title' class="page-title"><?php echo get_theme_mod('articles_cat_title', 'Check out our latest Articles!'); ?></h1>
 						<?php
 						the_archive_description( '<div class="taxonomy-description">', '</div>' );
 						?>
@@ -34,9 +38,11 @@ get_header(); ?>
 			//figure out what set of categories we're going to display
 			if(has_category('portfolio')){ ?>
 			<div class="archive-main-content">
+				<p id="port-cat-desc" class="archive-description"><?php echo get_theme_mod('port_cat_desc', 'Use customizer to fill this area in');?></p>
 				<?php $categoryChosen = 'template-parts/content-portfolio';
 				}else if(has_category('articles') ){ ?>
 				<div id="cat-articles-parent" class="archive-main-content">
+					<p id="articles-cat-desc" class="archive-description"><?php echo get_theme_mod('port_cat_desc', 'Use customizer to fill this area in');?></p>
 					<?php $categoryChosen = 'template-parts/content-articles';
 					};
 

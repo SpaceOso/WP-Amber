@@ -88,7 +88,103 @@
 			$( '#footer-address' ).text( to );
 		} );
 	} );
+	
+	/*======================================
+		 portfolio category
+	 ======================================*/
+	//portfolio-bg
+	wp.customize('portfolio_cat_header', function( value ) {
+		value.bind( function( to ) {
+			to = "url(" + to + ")";
+			$( '#cat-portfolio' ).css({
+				'background-image' : to
+			});
+		} );
+	});
+	
+	//portfolio category title
+	wp.customize( 'portfolio_cat_title', function( value ) {
+		value.bind( function( to ) {
+			$( '#cat-portfolio-title' ).text( to );
+		} );
+	} );
 
+	//portfolio desc
+	wp.customize( 'port_cat_desc', function( value ) {
+		value.bind( function( to ) {
+			$( '#port-cat-desc' ).text( to );
+		} );
+	} );
+	/*======================================
+	 articles category
+	 ======================================*/
+	//portfolio-bg
+	wp.customize('articles_cat_header', function( value ) {
+		value.bind( function( to ) {
+			to = "url(" + to + ")";
+			$( '#cat-articles' ).css({
+				'background-image' : to
+			});
+		} );
+	});
+	
+	//portfolio category title
+	wp.customize( 'articles_cat_title', function( value ) {
+		value.bind( function( to ) {
+			$( '#cat-articles-title' ).text( to );
+		} );
+	} );
+
+	//articles desc
+	wp.customize( 'articles_cat_desc', function( value ) {
+		value.bind( function( to ) {
+			$( '#articles-cat-desc' ).text( to );
+		} );
+	} );
+
+	/*======================================
+		 team member category
+	 ======================================*/
+	//team memeber-bg
+	wp.customize('team_cat_header', function( value ) {
+		value.bind( function( to ) {
+			to = "url(" + to + ")";
+			$( '#cat-team' ).css({
+				'background-image' : to
+			});
+		} );
+	});
+
+	//portfolio category title
+	wp.customize( 'team_cat_title', function( value ) {
+		value.bind( function( to ) {
+			$( '#cat-team-title' ).text( to );
+		} );
+	} );
+
+	//articles desc
+	wp.customize( 'team_cat_desc', function( value ) {
+		value.bind( function( to ) {
+			$( '#team-cat-desc' ).text( to );
+		} );
+	} );
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	// Site title and description.
 	wp.customize( 'blogname', function( value ) {
 		value.bind( function( to ) {

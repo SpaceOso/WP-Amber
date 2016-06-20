@@ -16,9 +16,12 @@ get_header(); ?>
 			if ( have_posts() ) : ?>
 
 			<header class="page-header">
-				<div class='blog-page-header'>
+				<?php //if(get_theme_mod('portfolio_cat_header') != ''){
+					$portCatHeader = get_theme_mod('portfolio_cat_header', get_bloginfo('template_url') . '/images/post-header.jpg');
+				// }; ?>
+				<div id='cat-portfolio' class='blog-page-header' style="background-image: url('<?php echo $portCatHeader; ?>')">
 					<div class="blog-page-title">
-						<h1 class="page-title">Check out our latest works!</h1>
+						<h1 id="cat-portfolio-title" class="page-title"><?php echo get_theme_mod('portfolio_cat_title', 'Check out our latest works!');?></h1>
 						<?php
 						the_archive_description( '<div class="taxonomy-description">', '</div>' );
 						?>
@@ -34,7 +37,7 @@ get_header(); ?>
 			//figure out what set of categories we're going to display
 			if(has_category('portfolio')){ ?>
 			<div class="archive-main-content">
-				<p class="archive-description">Bacon ipsum dolor amet flank filet mignon turkey sirloin alcatra bresaola drumstick pastrami shank capicola ball tip shoulder tenderloin landjaeger. Alcatra ball tip capicola porchetta meatloaf corned beef salami jowl tongue spare ribs leberkas pork loin. Drumstick jerky t-bone ground round, pastrami ham hock frankfurter biltong prosciutto filet mignon spare ribs cow sirloin salami rump.</p>
+				<p id="port-cat-desc" class="archive-description"><?php echo get_theme_mod('port_cat_desc', 'Use customizer to fill this area in');?></p>
 				<?php $categoryChosen = 'template-parts/content-portfolio';
 				}else if(has_category('articles') ){ ?>
 				<div id="cat-articles-parent" class="archive-main-content">
