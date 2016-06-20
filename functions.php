@@ -68,9 +68,14 @@ function sb_scroller_scripts() {
 		};
 
 		if(is_single()) {
+			//sidebar slide show
 			wp_enqueue_script( 'sidebar-slider', get_template_directory_uri() . '/js/sidebar-sliders.js', false );
 			wp_register_script( 'sidebar-slider' );
+
 		};
+		//team profiles
+		wp_enqueue_script( 'team-profiles', get_template_directory_uri() . '/js/team-profiles.js', false );
+		wp_register_script( 'team-profiles' );
 		wp_enqueue_script( 'countUp', get_template_directory_uri() . '/js/countUp.js', false );
 		wp_register_script( 'countUp' );
 		wp_enqueue_script( 'countUpJquery,', get_template_directory_uri() . '/js/countUp-jquery.js', false );

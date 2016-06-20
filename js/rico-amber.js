@@ -441,17 +441,16 @@
 
 		$("#btn").on('click', clickTest );
 
-		$(".team-profile-btn").mouseenter(function() {
-			$( this ).siblings(".team-member-picture").find(".member-name-slider")
-			.toggle('drop', {direction: 'down'});
-			// .toggle('drop');
-		});
-
-
-		$(".team-profile-btn").mouseleave(function() {
-			$( this ).siblings(".team-member-picture").find(".member-name-slider")
-			.toggle('drop', {direction: 'down'});
-		});
+		// $(".team-profile-btn").mouseenter(function() {
+		// 	$( this ).siblings(".team-member-picture").find(".member-name-slider")
+		// 	.toggle('drop', {direction: 'down'});
+		// });
+		//
+		//
+		// $(".team-profile-btn").mouseleave(function() {
+		// 	$( this ).siblings(".team-member-picture").find(".member-name-slider")
+		// 	.toggle('drop', {direction: 'down'});
+		// });
 
 		navBarToggle.on('click', function(){
 			navMenu.toggle('slide', {direction: 'up', easing: 'linear'}, 1000);
