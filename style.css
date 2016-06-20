@@ -2956,20 +2956,73 @@ footer{
 .blog-page{
 	position: relative;
 	background-color: #fff;
-	width: 690px;
+	/*width: 690px;*/
+	/*width: auto;*/
 	color: #3b4954;
 	margin: 0 auto;
 	/*float: left;*/
 	/*display: inline-block;*/
 }
 
+.page-content.port-content{
+	width: auto;
+}
+
+.port-image{
+	float: left;
+	width: 690px;
+}
+
+.port-post-content{
+	width: 220px;
+	float: left;
+	padding-left: 30px;
+}
+
+.port-post-content ul{
+	margin-left: 30px;
+}
+
+.port-post-content li{
+	display: block;
+	font-size: 1.6em;
+	position: relative;
+	padding-left: 20px;
+	margin-bottom: 10px;
+}
+
+.port-post-content li:before{
+	content: '';
+	background-image: url('images/icon-checks.svg');
+	background-repeat: no-repeat;
+	width: 15px;
+	height: 15px;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+}
+
+
+.blog-page:after{
+	content: '.';
+	clear: both;
+	visibility: hidden;
+	display: block;
+	height: 0;
+}
+
 .page-content{
-	padding-bottom: 40px;
-	border-bottom: 1px solid #b6b6b6;
-	margin:40px auto 20px auto;
+	width: 690px;
+	padding-bottom: 20px;
+	margin:40px auto 0 30%;
 	float: left;
 }
 
+.page-content blockquote{
+	border-left: 5px solid #c6c6c6;
+	padding-left: 20px;
+	margin-left: 60px;
+}
 
 .page-content h3{
 	font-weight: bold;
@@ -3091,8 +3144,10 @@ footer{
 --------------------------------------------------- */
 
 .page-tags{
-	font-size: 1.4em;
-	margin-bottom: 60px;
+	/*font-size: 1.4em;*/
+	margin-bottom: 15px;
+	clear: both;
+	border-top: 1px solid #b6b6b6;
 }
 
 .page-tags:before{
@@ -3105,7 +3160,10 @@ footer{
 .page-tags p,
 .page-tags ul{
 	display: inline-block;
+}
 
+.page-tags ul{
+	font-size: 1.4em;
 }
 
 .page-tags p{
@@ -3291,10 +3349,12 @@ label{
 	display: inline-block;
 	color: black;
 	width: 240px;
-	position: absolute;
+	/*position: absolute;*/
 	right: -260px;
 	top: 40px;
 	padding-left: 20px;
+	float: left;
+	margin-top: 50px;
 }
 
 .widget-title{

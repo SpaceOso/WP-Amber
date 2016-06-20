@@ -36,7 +36,7 @@
 							<h3 class="torquoise-font blog-title"><?php echo(get_the_title());?></h3>
 						</div>
 					</a>
-					<p class="gray-font"><?php echo(get_the_content());?></p>
+					<p class="gray-font"><?php echo(get_the_excerpt());?></p>
 					<div class="blog-posts-details">
 						<a class="torquoise-font blog-learnMore" href="<?php the_permalink(); ?>">Learn more</a>
 						<div class="gray-font blog-commentCount icon-bubbles2">

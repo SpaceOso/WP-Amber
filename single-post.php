@@ -8,7 +8,7 @@
  */
 
 get_header(); ?>
-<!--START OF PAGE-->
+	<!--START OF PAGE-->
 	<div id="primary" class=" content-area">
 		<!--HEADER/START-->
 		<div class='blog-page-header'>
@@ -36,21 +36,14 @@ get_header(); ?>
 			<!--page title-->
 			<div class="header-overlay"></div>
 		</div> <!--blog-page-header-->
-		<!--HEADER/END-->
+	<!--HEADER/END-->
 
-		<!--BLOG START-->
-		<div class='blog-page'>
-			<div class="page-content">
-					<?php  the_content();?>
-				<!--SIDEBAR-->
-				<?php get_sidebar();?>
-			</div><!-- page-content -->
-
-			<div class="page-tags">
-				<?php the_tags('<p>Tags:</p><ul><li>', ',</li><li>', '</li></ul>' ); ?>
-			</div>
-
-		</div> <!--blog-page-->
+		<!--display this if post is an article-->
+		<?php if( in_category('articles') ){
+			get_template_part( 'template-parts/template-articles' );
+		}else if( in_category('portfolio') ) {
+			get_template_part( 'template-parts/template-portfolio' );
+		}?>
 
 		<!--RELATED POSTS-->
 		<div class="related-posts-container">
@@ -58,7 +51,7 @@ get_header(); ?>
 		</div>
 		<!--RELATED POSTS END-->
 		<?php endwhile; // End of the loop.
-			wp_reset_postdata();
+		wp_reset_postdata();
 		endif;	?>
 
 		<!--COMMENTS-->
