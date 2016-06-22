@@ -39,16 +39,18 @@ get_header(); ?>
 	<!--HEADER/END-->
 
 		<!--display this if post is an article-->
-		<?php if( in_category('articles') ){
-			get_template_part( 'template-parts/template-articles' );
-		}else if( in_category('portfolio') ) {
-			get_template_part( 'template-parts/template-portfolio' );
-		}?>
-
+		<?php if( in_category('articles') || in_category('team-members') ){
+			get_template_part( 'template-parts/template-articles' );?>
 		<!--RELATED POSTS-->
 		<div class="related-posts-container">
 			<?php related_posts(); ?>
 		</div>
+		<?php
+		}else if( in_category('portfolio') ) {
+			get_template_part( 'template-parts/template-portfolio' );
+		}?>
+
+
 		<!--RELATED POSTS END-->
 		<?php endwhile; // End of the loop.
 		wp_reset_postdata();

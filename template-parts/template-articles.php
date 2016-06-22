@@ -10,12 +10,14 @@
 
 <!--BLOG START-->
 <div class='blog-page'>
-	<div class="page-content">
-		<?php  the_content();?>
-		<div class="page-tags">
-			<?php the_tags('<p>Tags:</p><ul><li>', ',</li><li>', '</li></ul>' ); ?>
-		</div>
-	</div><!-- page-content -->
-	<?php get_sidebar();?>
+	<div class="article-post-container">
+		<div class="page-content">
+			<?php  the_content();?>
+			<div class="page-tags">
+				<?php the_tags('<p>Tags:</p><ul><li>', ',</li><li>', '</li></ul>' ); ?>
+			</div>
+		</div><!-- page-content -->
+		<?php get_sidebar();?>
+	</div>
 </div> <!--blog-page-->
 
